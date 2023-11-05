@@ -14,8 +14,8 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
   const { user, logOut} =useContext(AuthContext)
 
   // NavLink classes
-  const active = 'btn text-[#FFF5EB] font-bold bg-[#1e1e24] border-2 border-[#FFF5EB] text-[#FFF5EB] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#FFF5EB]'
-  const inActive = 'btn bg-[#FFF5EB] text-black border-2 rounded-lg hover:bg-[#92140c] hover:border-[#FFF5EB] hover:text-[#FFF5EB]'
+  const active = 'btn text-[#FFEAD2] font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#FFEAD2]'
+  const inActive = 'btn bg-[#FFEAD2] text-black border-2 border-[#FFEAD2]  rounded-lg hover:bg-[#92140c] hover:border-[#FFEAD2] hover:text-[#FFEAD2]'
 
     // const handleTheme = ()=>{
     //   setLight(!light)
@@ -97,7 +97,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
                             <p className="text-sm bg-[#92140c] rounded-lg w-full  font-semibold">{userName}</p>
                         </div>
                         </div>
-                      <Link onClick={handleLogOut} className='btn text-black bg-[#FFF5EB] font-bold border-2 rounded-2xl hover:bg-[#1e1e24] hover:border-[#FFF5EB] hover:text-[#FFF5EB]'>Log out</Link>
+                      <Link onClick={handleLogOut} className='btn text-black bg-[#FFEAD2] font-bold border-2 rounded-2xl hover:bg-[#1e1e24] hover:border-[#FFEAD2] hover:text-[#FFEAD2]'>Log out</Link>
                     
                     </div>
 
