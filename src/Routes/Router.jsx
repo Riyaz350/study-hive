@@ -6,10 +6,11 @@ import Home from "../Pages/Home";
 import LogIn from "../Pages/LogIn";
 import Register from "../Pages/Register";
 import CreateAssignments from "../Pages/CreateAssignments";
-import MyAssignments from "../Pages/MyAssignments";
+import MyAssignments from "../Pages/MyAssignments/MyAssignments";
 import SubmittedAssignments from "../Pages/SubmittedAssignments";
 import Assignments from "../Pages/Assignments/Assignments";
 import UpdateAssignment from "../Pages/UpdateAssignment";
+import AssignmentDetails from "../Pages/Assignments/AssignmentDetails";
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,12 @@ const router = createBrowserRouter([
             path:'/updateAssignment/:id',
             element:<UpdateAssignment></UpdateAssignment>,
             loader:({params})=> fetch(`http://localhost:5000/assignments/${params.id}`)
+          },
+          {
+            path:'/assignmentDetails/:id',
+            element:<AssignmentDetails></AssignmentDetails>,
+            loader:({params})=> fetch(`http://localhost:5000/assignments/${params.id}`)
+
           }
       ],
     },
