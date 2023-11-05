@@ -22,8 +22,8 @@ const MyAssignmentsCard = ({assignment}) => {
                 <p>Marks: {mark}</p>
                 <p>Difficulty: {difficulty.toUpperCase()}</p>
                 <div className="card-actions lg:justify-center mb-2">
-                <Link to={`/updateAssignment/${_id}`} className="btn text-sm bg-[#FFF5EB]">Update Assignment</Link>
-                <Link onClick={()=>handleDelete(email)} className="btn text-sm bg-[#FFF5EB]">Delete Assignment</Link>
+                <Link to={`/updateAssignment/${_id}`} className="btn text-sm bg-[#FFEAD2] text-black border-2 border-[#FFEAD2]  rounded-lg hover:bg-[#92140c] hover:border-[#FFEAD2] hover:text-[#FFEAD2]">Update Assignment</Link>
+                <Link onClick={()=>handleDelete(email)} className="btn text-sm bg-[#FFEAD2] text-black border-2 border-[#FFEAD2]  rounded-lg hover:bg-[#92140c] hover:border-[#FFEAD2] hover:text-[#FFEAD2]">Delete Assignment</Link>
 
                 </div>
             </div>
