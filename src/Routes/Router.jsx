@@ -9,6 +9,7 @@ import CreateAssignments from "../Pages/CreateAssignments";
 import MyAssignments from "../Pages/MyAssignments";
 import SubmittedAssignments from "../Pages/SubmittedAssignments";
 import Assignments from "../Pages/Assignments";
+import UpdateAssignment from "../Pages/UpdateAssignment";
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
           {
             path:'/assignments',
             element:<Assignments></Assignments>
+          },
+          {
+            path:'/updateAssignment',
+            element:<UpdateAssignment></UpdateAssignment>
           }
       ],
     },

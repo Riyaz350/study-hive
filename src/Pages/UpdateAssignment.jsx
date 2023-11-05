@@ -7,10 +7,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import './pages.css'
 
-
-
-const CreateAssignments = () => {
-
+const UpdateAssignment = () => {
     const {user} =useContext(AuthContext)
 
     const [startDate, setStartDate] = useState(new Date());
@@ -97,4 +94,4 @@ const CreateAssignments = () => {
     );
 };
 
-export default CreateAssignments;
+export default UpdateAssignment;
