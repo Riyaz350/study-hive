@@ -5,6 +5,8 @@ import swal from 'sweetalert';
 import { GoogleAuthProvider, updateProfile } from "firebase/auth";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import auth from "../../firebase.config";
+import Navbar from "../Shared/Navbar";
+import Footer from "../Shared/Footer";
 
 
 const Register = () => {
@@ -79,7 +81,7 @@ const Register = () => {
     return (
         <div className="">
             
-    
+            <Navbar></Navbar>
             <div data-aos='fade-up' className={"bg-white py-20 lg:p-20"}>
                 <div className={" max-w-xl rounded-3xl mx-auto my-20 py-10 px-5 lg:p-20 bg-white border-2 border-black"}>
                     <div className="text-center ">
@@ -145,7 +147,7 @@ const Register = () => {
                     </div>
                 </div>
                 </div>
-
+            <Footer></Footer>
             </div>
     );
 };

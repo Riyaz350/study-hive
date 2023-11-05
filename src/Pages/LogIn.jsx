@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Navbar from "../Shared/Navbar";
+import Footer from "../Shared/Footer";
 
 const LogIn = () => {
     const navigate = useNavigate()
@@ -52,7 +54,7 @@ const LogIn = () => {
     return (
         
         <div  >
-
+            <Navbar></Navbar>
             <div data-aos='fade-up' className="py-20 lg:p-20">
                 <div className={` "text-black light-home max-w-xl rounded-3xl mx-auto my-20 py-10 px-5 lg:p-20 border-2 border-black"}`}>
                     <div className="text-center ">
@@ -94,6 +96,7 @@ const LogIn = () => {
                     </div>
                 </div>
                 </div>
+                <Footer></Footer>
             </div>
 
     );
