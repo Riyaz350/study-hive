@@ -24,6 +24,19 @@ const router = createBrowserRouter([
             path:'/register',
             element:<Register></Register>
           },
+          {
+            path:'/createAssignments',
+
+          },
+          {
+            path:'/myAssignments',
+          },
+          {
+            path:'/submittedAssignments',
+          },
+          {
+            path:'/assignments',
+          }
       ],
     },
   ]);
