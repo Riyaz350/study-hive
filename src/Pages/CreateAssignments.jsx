@@ -57,7 +57,7 @@ const CreateAssignments = () => {
         <div className={` ${"light-home"}`}>
             <Navbar></Navbar>
             <div className="p-10 lg:px-20 lg:py-20 ">
-            <h1 className={"text-3xl lg:text-5xl mb-10 text-black"}>Add a new product</h1>
+            <h1 className={"text-3xl lg:text-5xl mb-10 text-black"}>Create a new assignment</h1>
             <form  onSubmit={handleAddPhone} className="lg:space-y-10 form">
                     <div className=" md:gap-6 ">
                     <div className="relative z-0 w-full mb-6 group">
