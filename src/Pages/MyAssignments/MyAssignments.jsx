@@ -10,7 +10,7 @@ const MyAssignments = () => {
 
     const {user} =useContext(AuthContext)
     useEffect(()=>{
-        fetch(`http://localhost:5000/assignments?email=${user?.email}`)
+        fetch(`http://localhost:5000/submitted?email=${user?.email}`)
         .then(res=>res.json())
         .then(data=>setAssignments(data))
         
@@ -18,11 +18,27 @@ const MyAssignments = () => {
     return (
         <div>
             <Navbar></Navbar>
-                <div className="flex-1 h-full lg:grid grid-cols-3 max-w-7xl mx-auto my-20">
-
-                {
+                <div className="">
+                <div className="overflow-x-auto max-w-7xl mx-auto">
+                <table className="table w-full">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>Examinee</th>
+                            <th>Assignment</th>
+                            <th>Marks</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
                     assignments.map(assignment =><MyAssignmentsCard key={assignment._id} assignment={assignment}></MyAssignmentsCard>)
-                }
+                    }
+                    </tbody>
+
+                </table>
+                </div>
+                
                 </div>
             <Footer></Footer>
         </div>
