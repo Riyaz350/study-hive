@@ -5,7 +5,7 @@ import swal from "sweetalert";
 import Swal from "sweetalert2";
 import { upperFirstChar } from "../../utilities.js/utilities";
 
-const AssignmentCards = ({assignment, assignments, setFilteredAssignments}) => {
+const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments}) => {
     
     const {_id, email, title, photo, mark, difficulty } = assignment
     const {user} =useContext(AuthContext)
@@ -36,7 +36,7 @@ const AssignmentCards = ({assignment, assignments, setFilteredAssignments}) => {
                 if(data.deletedCount>0)
                 { 
                     swal('Deleted','The assignment has been deleted', 'success')
-                    const filtered = assignments.filter(assignment => assignment._id !== _id)
+                    const filtered = filteredAssignment.filter(assignment => assignment._id !== _id)
                     // console.log(data, filtered)
                     setFilteredAssignments(filtered)
             }
