@@ -4,14 +4,15 @@ import Footer from "../../Shared/Footer";
 import swal from "sweetalert";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { dateTime } from "../../utilities/utilities";
+import { dateTime } from "../../utilities.js/utilities";
+import { upperFirstChar } from "../../utilities.js/utilities";
 
 const AssignmentDetails = () => {
     const toDate = new Date()
     const  assignment = useLoaderData()
     const {user} =useContext(AuthContext)
     const { title, photo, mark, difficulty, date, description } = assignment
-
+    const Difficulty = upperFirstChar(difficulty)
     // Assignment Submission
     const handleSubmit = e =>{
         const form = e.target
@@ -44,30 +45,33 @@ const AssignmentDetails = () => {
         <div>
             <Navbar></Navbar>
             <div>
-                <div className="card card-compact max-w-7xl mx-auto lg:p-20 bg-base-100 shadow-xl">
+                <div className="card card-compact max-w-7xl mx-auto lg:p-20 bg-base-100 shadow-xl my-20">
                     <figure><img src={photo} alt="Shoes" /></figure>
-                    <div className="card-body">
+                    <div className="card-body space-y-5">
                         <h2 className="text-2xl lg:text-5xl font-bold">{title}</h2>
                         <p className="text-xl lg:text-3xl font-semibold">Marks: {mark}</p>
-                        <p className="text-lg font-bold">Difficulty: {difficulty.toUpperCase()}</p>
+                        <p className="text-xl font-bold">Difficulty: {Difficulty}</p>
                         <p className="text-lg font-bold">Due date: {date}</p>
-                        <p className="text-lg font-bold">Description</p>
-                        <p className="text-lg">{description}</p>
+                        <p className="text-lg font-bold">Description:</p>
+                        <p className="text-xl">{description}</p>
                         <div className="card-actions justify-center">
 
 
                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="btn" onClick={()=>document.getElementById('my_modal_3').showModal()}>open modal</button>
+                            <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
                             <dialog id="my_modal_3" className="modal">
-                            <div className="modal-box">
-                                <form onSubmit={handleSubmit} method="dialog">
+                            <div className="modal-box bg-[#FFEAD2]">
+                                <form onSubmit={handleSubmit} className="space-y-2" method="dialog">
                                 <h3 className="font-bold text-lg">Submission Form</h3>
-                                <p className="py-4 text-xl">Put your PDF Google Drove link here & click submit</p>
-                                <input className="p-2 border-2 border-gray-200 rounded-lg" name="link" type="text" placeholder='Provide your PDF link ' />
-                                <textarea name="note" placeholder="Quick Notes"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                <button>Submit</button>
+                                <p className=" text-xl">Put your PDF Google Drove link here & click submit</p>
+                                <input required className="p-2 border-2 border-gray-200 rounded-lg" name="link" type="text" placeholder='Provide your PDF link ' />
+                                <textarea  name="note" placeholder="Quick Notes"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                             
+                                <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>
                                 </form>
                             </div>
+                            <form method="dialog" className="modal-backdrop">
+                                <button>close</button>
+                            </form>
                             </dialog>
                                 
                                 

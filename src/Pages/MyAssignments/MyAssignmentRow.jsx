@@ -1,10 +1,10 @@
-import { upperFirstChar } from "../../utilities/utilities";
+import { upperFirstChar } from "../../utilities.js/utilities";
 
 const MyAssignmentRow = ({assignment}) => {
     const { name, title, mark, status, obtained_marks, feedback } = assignment
     const Status = upperFirstChar(status)
     return (
-        <tr>
+        <tr className="border-2 border-black  rounded-lg ">
         <th>{name}</th>
         <th>{title}</th>
         <th>{mark}</th>

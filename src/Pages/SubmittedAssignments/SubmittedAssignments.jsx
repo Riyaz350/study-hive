@@ -18,11 +18,11 @@ const SubmittedAssignments = () => {
         <div>
         <Navbar></Navbar>
             <div className="">
-            <div className="overflow-x-auto max-w-7xl mx-auto">
+            <div className="overflow-x-auto max-w-7xl mx-auto my-5 ">
             <table className="table w-full">
                 {/* head */}
                 <thead>
-                    <tr>
+                    <tr className="text-xl">
                         <th>Examinee</th>
                         <th>Assignment</th>
                         <th>Marks</th>
@@ -30,9 +30,9 @@ const SubmittedAssignments = () => {
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                 {
-                assignments.map(assignment =><SubmittedAssignmentsRow key={assignment._id} assignment={assignment}></SubmittedAssignmentsRow>)
+                assignments.map(assignment =><SubmittedAssignmentsRow key={assignment._id} assignment={assignment} assignments={assignments} setAssignments={setAssignments}></SubmittedAssignmentsRow>)
                 }
                 </tbody>
 

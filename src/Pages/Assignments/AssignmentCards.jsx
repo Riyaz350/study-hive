@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { upperFirstChar } from "../../utilities.js/utilities";
 
 const AssignmentCards = ({assignment, assignments, setFilteredAssignments}) => {
     
     const {_id, email, title, photo, mark, difficulty } = assignment
     const {user} =useContext(AuthContext)
-
+    const Difficulty = upperFirstChar(difficulty)
     const handleDelete = email =>{
         console.log(email == user.email)
         if(!user){
@@ -61,7 +62,7 @@ const AssignmentCards = ({assignment, assignments, setFilteredAssignments}) => {
                 <div className=" text-start  flex flex-col gap-2">
                     <h2 className="lg:card-title text-3xl">{title}</h2>
                     <p>Marks: {mark}</p>
-                    <p>Difficulty: {difficulty.toUpperCase()}</p>
+                    <p>Difficulty: {Difficulty}</p>
                     <div className="card-actions lg:justify-center mb-2">
                     <div className="gap-2 flex flex-col  w-full ">
                     <Link to={`/assignmentDetails/${_id}`} className="btn w-full text-sm bg-[#FFEAD2] text-black border-2 border-[#FFEAD2]  rounded-lg hover:bg-[#92140c] hover:border-[#FFEAD2] hover:text-[#FFEAD2]">View Assignment</Link>
