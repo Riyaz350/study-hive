@@ -1,11 +1,13 @@
 
 const SubmittedAssignmentsRow = ({assignment}) => {
-    const {name, title, mark } = assignment
+    const {name, title, mark, submissionTime } = assignment
+    
     return (
         <tr>
         <th>{name}</th>
         <th>{title}</th>
         <th>{mark}</th>
+        <th>{submissionTime}</th>
         <th><button className="btn">Give Mark</button></th>
     </tr>
     );

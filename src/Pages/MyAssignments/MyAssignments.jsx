@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Footer from "../../Shared/Footer";
 import Navbar from "../../Shared/Navbar";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import MyAssignmentsCard from "./MyAssignmentsCard";
+import MyAssignmentRow from "./MyAssignmentRow";
 
 const MyAssignments = () => {
 
@@ -21,18 +21,19 @@ const MyAssignments = () => {
                 <div className="">
                 <div className="overflow-x-auto max-w-7xl mx-auto">
                 <table className="table w-full">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th>Examinee</th>
                             <th>Assignment</th>
-                            <th>Marks</th>
-                            <th></th>
+                            <th>Total Marks</th>
+                            <th>Status</th>
+                            <th>Obtained Marks</th>
+                            <th>Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
                     {
-                    assignments.map(assignment =><MyAssignmentsCard key={assignment._id} assignment={assignment}></MyAssignmentsCard>)
+                    assignments.map(assignment =><MyAssignmentRow key={assignment._id} assignment={assignment}></MyAssignmentRow>)
                     }
                     </tbody>
 

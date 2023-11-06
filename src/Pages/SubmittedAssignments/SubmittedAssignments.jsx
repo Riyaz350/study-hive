@@ -26,6 +26,7 @@ const SubmittedAssignments = () => {
                         <th>Examinee</th>
                         <th>Assignment</th>
                         <th>Marks</th>
+                        <th>Submission Time</th>
                         <th></th>
                     </tr>
                 </thead>

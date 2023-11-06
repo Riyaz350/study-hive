@@ -4,13 +4,13 @@ import Footer from "../../Shared/Footer";
 import swal from "sweetalert";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { dateTime } from "../../utilities/utilities";
 
 const AssignmentDetails = () => {
-
+    const toDate = new Date()
     const  assignment = useLoaderData()
     const {user} =useContext(AuthContext)
-    console.log(user)
-    const {_id, title, photo, mark, difficulty,date, description } = assignment
+    const { title, photo, mark, difficulty, date, description } = assignment
 
     // Assignment Submission
     const handleSubmit = e =>{
@@ -19,7 +19,8 @@ const AssignmentDetails = () => {
         const email = user.email
         const link = form.link.value
         const note = form.note.value
-        const submitAssignment = {name, email, link, note, title, mark, status:'pending'}
+        const submissionTime = dateTime(toDate)
+        const submitAssignment = {name, email, link, note, title, mark, status:'pending', obtained_marks:'Pending', feedback:'Pending', submissionTime}
         if(!link){
             swal('The link field can not be empty', 'Please provide a link', 'error')
         }else{
