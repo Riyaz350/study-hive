@@ -17,7 +17,7 @@ const SubmittedAssignments = () => {
     return (
         <div>
         <Navbar></Navbar>
-            <div className="">
+            <div className="min-h-screen">
             <div className="overflow-x-auto max-w-7xl mx-auto my-5 ">
             <table className="table w-full">
                 {/* head */}

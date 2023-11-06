@@ -44,7 +44,7 @@ const AssignmentDetails = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div>
+            <div className="min-h-screen">
                 <div className="card card-compact max-w-7xl mx-auto lg:p-20 bg-base-100 shadow-xl my-20">
                     <figure><img src={photo} alt="Shoes" /></figure>
                     <div className="card-body space-y-5">
@@ -58,15 +58,15 @@ const AssignmentDetails = () => {
 
 
                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
+                            <button className="btn font-bold bg-[#1e1e24] border-2 border-[#1e1e24] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
                             <dialog id="my_modal_3" className="modal">
-                            <div className="modal-box bg-[#FFEAD2]">
+                            <div className="modal-box bg-[#FFDDB6]">
                                 <form onSubmit={handleSubmit} className="space-y-2" method="dialog">
                                 <h3 className="font-bold text-lg">Submission Form</h3>
                                 <p className=" text-xl">Put your PDF Google Drove link here & click submit</p>
                                 <input required className="p-2 border-2 border-gray-200 rounded-lg" name="link" type="text" placeholder='Provide your PDF link ' />
                                 <textarea  name="note" placeholder="Quick Notes"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                             
-                                <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>
+                                <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>
                                 </form>
                             </div>
                             <form method="dialog" className="modal-backdrop">
@@ -80,7 +80,9 @@ const AssignmentDetails = () => {
                     </div>
                 </div>
             </div>
+            <div className=" w-full bottom-0">
             <Footer></Footer>
+            </div>
         </div>
     );
 };

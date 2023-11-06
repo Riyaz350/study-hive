@@ -1,9 +1,9 @@
 
 const Footer = () => {
     return (
-        <footer className="lg:flex justify-around footer p-10 bg-[#92140c] text-[#FFEAD2]">
+        <footer className=" lg:flex justify-around footer p-10 bg-[#92140c] text-[#FFDDB6]">
             <aside>
-                <img className="w-44 " src="https://i.ibb.co/Wv4p2vK/image-removebg-preview-28-2.png" alt="" />
+                <img className="w-44 " src="" alt="" />
                 <p>Cell Central Ltd.<br/>Providing reliable tech since 1992</p>
             </aside> 
             <nav className="">

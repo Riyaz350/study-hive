@@ -14,8 +14,8 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
   const { user, logOut} =useContext(AuthContext)
 
   // NavLink classes
-  const active = 'btn text-[#FFEAD2] font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#FFEAD2]'
-  const inActive = 'btn bg-[#FFEAD2] text-black border-2 border-[#FFEAD2]  rounded-lg hover:bg-[#92140c] hover:border-[#FFEAD2] hover:text-[#FFEAD2]'
+  const active = 'btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#FFDDB6]'
+  const inActive = 'btn bg-[#FFDDB6] text-black border-2 border-[#FFDDB6] rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]'
 
     // const handleTheme = ()=>{
     //   setLight(!light)
@@ -48,10 +48,11 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
   const navLinks = <>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/">Home</NavLink>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/assignments">Assignments</NavLink>
-      {user? <><NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/createAssignments">Create Assignments</NavLink>
+      {user? <>
+      <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/createAssignments">Create Assignments</NavLink>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/myAssignments">My Assignments</NavLink>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/submittedAssignments">Submitted Assignments</NavLink>
-     </>: <div></div>}
+      </>: <div></div>}
        </>
       
 
@@ -97,7 +98,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
                             <p className="text-sm bg-[#92140c] rounded-lg w-full  font-semibold">{userName}</p>
                         </div>
                         </div>
-                      <Link onClick={handleLogOut} className='btn text-black bg-[#FFEAD2] font-bold border-2 rounded-2xl hover:bg-[#1e1e24] hover:border-[#FFEAD2] hover:text-[#FFEAD2]'>Log out</Link>
+                      <Link onClick={handleLogOut} className='btn text-black bg-[#FFDDB6] border-[#FFDDB6] font-bold border-2 rounded-2xl hover:bg-[#1e1e24] hover:border-[#FFDDB6] hover:text-[#FFDDB6]'>Log out</Link>
                     
                     </div>
 

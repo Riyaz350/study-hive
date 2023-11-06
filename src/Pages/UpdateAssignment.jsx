@@ -58,7 +58,7 @@ const UpdateAssignment = () => {
     return (
         <div className={` ${"light-home"}`}>
             <Navbar></Navbar>
-            <div className="p-10 lg:px-20 lg:py-20 ">
+            <div className="min-h-screen  p-10 lg:px-20 lg:py-20 ">
             <h1 className={"text-3xl lg:text-5xl mb-10 text-black"}>Update Assignment {title}</h1>
             <form  onSubmit={handleAddPhone} className="lg:space-y-10 form">
                     <div className=" md:gap-6 ">
@@ -89,7 +89,7 @@ const UpdateAssignment = () => {
                         </div>
                     </div>
                     <div>
-                    <textarea defaultValue={description} name="description" placeholder="Description"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>
+                    <textarea defaultValue={description} name="description" placeholder="Description"  className="textarea textarea-bordered h-[200px] textarea-lg w-full " ></textarea>
                     </div>
             <button type="submit" className="text-black hover:text-white bg-white hover:bg-red-700 border-2 border-black hover:border-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Assignment</button>
             </form>

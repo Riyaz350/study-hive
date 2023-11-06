@@ -1,5 +1,19 @@
-
+import { useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url,
+).toString();
+import pdf from '../../1.pdf'
 const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
+
+    const [numPages, setNumPages] = useState();
+    const [pageNumber, setPageNumber] = useState(1);
+  
+    function onDocumentLoadSuccess({ numPages }) {
+      setNumPages(numPages);
+    }
+
     const {_id, link, note, name, title, mark, submissionTime } = assignment
 
     const handleSubmit = e =>{
@@ -32,15 +46,27 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
         <th>{submissionTime}</th>
 
         <th>
-            <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById(_id).showModal()}>Give Mark</button>
-            <dialog id={_id} className="modal">
-            <div className="modal-box bg-[#FFEAD2]">
+            <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById(_id).showModal()}>Give Mark</button>
+            <dialog id={_id} className="modal max-w-6xl mx-auto">
+            <div className="modal-box max-w-6xl bg-[#FFDDB6]">
                 <form onSubmit={handleSubmit} className=" space-y-2" method="dialog">
                 <h3 className="font-bold text-lg">{link}</h3>
                 <p className=" text-xl">{note}</p>
+                <div className=''>
+                        <p>
+                            Page {pageNumber} of {numPages}
+                        </p>
+                    <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
+                            <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false}/>
+                        </Document>
+                        
+                </div>
                 <input required className="p-2 border-2 border-gray-200 rounded-lg" name="mark" type="number" placeholder='Obtained marks' />
                 <textarea required name="feedback" placeholder="Feedback"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                                
-                <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFEAD2] text-[#FFEAD2] rounded-lg hover:bg-[#FFECD6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>
+                <div className='flex justify-between items-center'>
+                <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>
+                <p>Press Esc to close</p>
+                </div>
                 </form>
            </div>
             <form method="dialog" className="modal-backdrop">
