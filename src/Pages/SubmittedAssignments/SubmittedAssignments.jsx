@@ -9,7 +9,7 @@ const SubmittedAssignments = () => {
 
     const {user} =useContext(AuthContext)
     useEffect(()=>{
-        fetch(`http://localhost:5000/submitted?status='pending'`)
+        fetch(`http://localhost:5000/submitted?status=pending`)
         .then(res=>res.json())
         .then(data=>setAssignments(data))
         

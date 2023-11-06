@@ -10,7 +10,7 @@ const MyAssignments = () => {
 
     const {user} =useContext(AuthContext)
     useEffect(()=>{
-        fetch(`http://localhost:5000/submitted?email=${user?.email}`)
+        fetch(`http://localhost:5000/myAssignments?email=${user?.email}`)
         .then(res=>res.json())
         .then(data=>setAssignments(data))
         
