@@ -41,9 +41,7 @@ const MyAssignments = () => {
                 </div>
                 
                 </div>
-            <div className="  bottom-0">
             <Footer></Footer>
-            </div>
         </div>
     );
 };
