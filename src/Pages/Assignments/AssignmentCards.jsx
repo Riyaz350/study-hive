@@ -59,7 +59,7 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                 <div className="w-fit">
                 <img className="w-fit rounded-lg" src={photo} alt="Shoes" />
                 </div>
-                <div className=" text-start  flex flex-col gap-2">
+                <div className=" text-start w-full flex flex-col gap-2">
                     <h2 className="lg:card-title text-3xl">{title}</h2>
                     <p>Marks: {mark}</p>
                     <p>Difficulty: {Difficulty}</p>
@@ -67,10 +67,9 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                     <div className="gap-2 flex flex-col  w-full ">
                     <Link to={`/assignmentDetails/${_id}`} className="btn w-full text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">View Assignment</Link>
                     <Link to={`/updateAssignment/${_id}`} className="btn w-full text-sm  bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Update Assignment</Link>
+                    {user? <Link onClick={()=>handleDelete(email)} className="btn w-full text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Delete Assignment</Link>: <div></div>}
                     
                     </div>
-                    <Link onClick={()=>handleDelete(email)} className="btn w-full text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Delete Assignment</Link>
-
                     </div>
                 </div>
             </div>

@@ -6,10 +6,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import './pages.css'
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateAssignment = () => {
     const assignment = useLoaderData()
+    const navigate = useNavigate()
     console.log(assignment)
 
     const {_id, title, photo, mark, difficulty, description } = assignment
@@ -43,8 +44,8 @@ const UpdateAssignment = () => {
         })
         .then(res => res.json())
         .then(data =>{
-            swal("Assignment Updated", "The Assignment has been added to the Assignments", "success");
-                form.reset()
+            swal("Assignment Updated", "The Assignment has been updated", "success");
+            navigate('/assignments')
             console.log(data)
         })
 
@@ -59,7 +60,7 @@ const UpdateAssignment = () => {
         <div className={` ${"light-home"}`}>
             <Navbar></Navbar>
             <div className="min-h-screen  p-10 lg:px-20 lg:py-20 ">
-            <h1 className={"text-3xl lg:text-5xl mb-10 text-black"}>Update Assignment {title}</h1>
+            <h1 className="text-3xl lg:text-5xl text-[#FFDDB6] p-3 rounded-lg bg-[#92140c] w-fit ">Update Assignment: {title}</h1>
             <form  onSubmit={handleAddPhone} className="lg:space-y-10 form">
                     <div className=" md:gap-6 ">
                     <div className="relative z-0 w-full mb-6 group">

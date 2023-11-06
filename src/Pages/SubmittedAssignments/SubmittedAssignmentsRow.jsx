@@ -50,8 +50,8 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
             <dialog id={_id} className="modal max-w-6xl mx-auto">
             <div className="modal-box max-w-6xl bg-[#FFDDB6]">
                 <form onSubmit={handleSubmit} className=" space-y-2" method="dialog">
-                <h3 className="font-bold text-lg">{link}</h3>
-                <p className=" text-xl">{note}</p>
+                <h3 className="font-bold text-lg">Link: {link}</h3>
+                <p className=" text-xl">Note: {note}</p>
                 <div className=''>
                         <p>
                             Page {pageNumber} of {numPages}
@@ -65,7 +65,7 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
                 <textarea required name="feedback" placeholder="Feedback"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                                
                 <div className='flex justify-between items-center'>
                 <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>
-                <p>Press Esc to close</p>
+                <p className='bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] p-2 rounded-lg'>Press Esc to close</p>
                 </div>
                 </form>
            </div>

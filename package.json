@@ -22,7 +22,8 @@
     "react-router-dom": "^6.18.0",
     "sort-by": "^1.2.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.9.0"
+    "sweetalert2": "^11.9.0",
+    "swiper": "^11.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
