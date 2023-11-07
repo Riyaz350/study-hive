@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../../Shared/Navbar";
 import Footer from "../../Shared/Footer";
 import swal from "sweetalert";
-import { useContext } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { dateTime } from "../../utilities.js/utilities";
 import { upperFirstChar } from "../../utilities.js/utilities";
@@ -10,10 +10,12 @@ import axios from "axios";
 
 const AssignmentDetails = () => {
     const toDate = new Date()
-    const  assignment = useLoaderData()
+    const assignment = useLoaderData()
     const {user} =useContext(AuthContext)
     const { title, photo, mark, difficulty, date, description } = assignment
     const Difficulty = upperFirstChar(difficulty)
+
+
     // Assignment Submission
     const handleSubmit = e =>{
         const form = e.target

@@ -11,7 +11,7 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
     const {user} =useContext(AuthContext)
     const Difficulty = upperFirstChar(difficulty)
 
-    
+
     const handleDelete = email =>{
         console.log(email == user.email)
         if(!user){
@@ -39,7 +39,6 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                 { 
                     swal('Deleted','The assignment has been deleted', 'success')
                     const filtered = filteredAssignment.filter(assignment => assignment._id !== _id)
-                    // console.log(data, filtered)
                     setFilteredAssignments(filtered)
             }
     

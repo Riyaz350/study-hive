@@ -6,13 +6,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import './pages.css'
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 
 const CreateAssignments = () => {
 
     const {user} =useContext(AuthContext)
-
+    const navigate = useNavigate()
     const [startDate, setStartDate] = useState(new Date());
     const [difficultyValue, setDifficultyValue] = useState('easy')
     const day = startDate.getDate()
@@ -30,21 +32,15 @@ const CreateAssignments = () => {
         const date = day+'/'+month+'/'+year
         const description = form.description.value
         const addAssignment = {title,email, difficulty, photo, mark, date, description}
-        console.log(addAssignment)
 
-        fetch('http://localhost:5000/assignments',{
-            method:'POST',
-            headers:{
-                'content-type': 'application/json'
-            },
-            body:JSON.stringify(addAssignment)
-        })
-        .then(res => res.json())
+        axios.post(`http://localhost:5000/assignments?email=${user?.email}`, addAssignment, {withCredentials:true})
         .then(data =>{
-            swal("Assignment Added", "The Assignment has been added to the Assignments", "success");
-                // form.reset()
-            console.log(data)
+                swal("Assignment Created", "You've created an Assignment", "success");
+                navigate('/assignments')
+                console.log(data)
         })
+
+
 
     }
 

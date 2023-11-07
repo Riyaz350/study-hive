@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import swal from 'sweetalert';
 import { AuthContext } from "../AuthProvider/AuthProvider";
-// import {BsLightbulbFill, BsLightbulbOff } from 'react-icons/bs';
 
 
 
@@ -10,18 +9,12 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
   const [photo, setPhoto] =useState('')
   const [userName, setUserName] =useState('')
-//   const [light, setLight] =useState(true)
   const { user, logOut} =useContext(AuthContext)
 
   // NavLink classes
   const active = 'btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#FFDDB6]'
   const inActive = 'btn bg-[#FFDDB6] text-black border-2 border-[#FFDDB6] rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]'
 
-    // const handleTheme = ()=>{
-    //   setLight(!light)
-    //   dark(light)
-
-    // }
 
 
  //LogOut button handler 
@@ -82,15 +75,11 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
                 <NavLink to="/login" className={  ({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive}>Log In</NavLink>
 
-                {/* {theme? <IconButton className="bg-white ml-10 lg:ml-4 text-black border-2 border-black" onClick={handleTheme} size="sm"><BsLightbulbFill/></IconButton>:
-                    <IconButton className="bg-black ml-10 lg:ml-4 text-white border-2 border-white" onClick={handleTheme} size="sm"><BsLightbulbOff/></IconButton>}
-                     */}
 
               </div> :
                  
                   <div className="flex  lg:flex-row  justify-center lg:justify-end items-center gap-4  lg:w-full">
                     <div className="flex flex-row justify-center items-center gap-4">
-                      {/* <h1 className="text-white  ">{userName}</h1> */}
                       <div className="flex  gap-6 justify-center">
                       <div className="relative group w-[100px]">
                       <img src={photo}  alt="" className="w-[50px] mx-auto rounded-lg"/>
@@ -103,8 +92,6 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
                     </div>
 
                     </div>
-                   {/* {!theme? <IconButton className="bg-white  text-black border-2 border-white" onClick={handleTheme} size="sm"><BsLightbulbFill/></IconButton>:
-                    <IconButton className="bg-black text-white border-2 border-white" onClick={handleTheme} size="sm"><BsLightbulbOff/></IconButton>} */}
 
                     </div>
                   }

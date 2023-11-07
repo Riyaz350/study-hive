@@ -3,7 +3,7 @@ import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useContext, useState } from "react";
+import { useContext,  useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import './pages.css'
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -12,9 +12,10 @@ import axios from "axios";
 const UpdateAssignment = () => {
     const assignment = useLoaderData()
     const navigate = useNavigate()
-    // console.log(assignment)
 
-    const {_id, title, date, photo, mark, difficulty, description } = assignment
+
+
+    const {_id, title,  photo, mark, difficulty, description } = assignment
     
     const {user} =useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
@@ -33,32 +34,13 @@ const UpdateAssignment = () => {
         const mark = form.mark.value
         const date = day+'/'+month+'/'+year
         const description = form.description.value
-        const addAssignment = {title,email, difficulty, photo, mark, date, description}
-        // ${baseUrl}?_id=${itemId}&query1=${otherQuery1}
-        axios.put(`http://localhost:5000/assignments?_id=${_id}&email=${user?.email}`, addAssignment, {withCredentials:true})
+        const updateAssignment = {title,email, difficulty, photo, mark, date, description}
+        axios.put(`http://localhost:5000/assignments?_id=${_id}&email=${user?.email}`, updateAssignment, {withCredentials:true})
         .then(data =>{
                 swal("Assignment Updated", "The Assignment has been updated", "success");
-                // navigate('/assignments')
+                navigate('/assignments')
                 console.log(data)
         })
-            
-
-
-
-
-        // fetch(`http://localhost:5000/assignments/${_id}`,{
-        //     method:'PUT',
-        //     headers:{
-        //         'content-type': 'application/json'
-        //     },
-        //     body:JSON.stringify(addAssignment)
-        // })
-        // .then(res => res.json())
-        // .then(data =>{
-        //     swal("Assignment Updated", "The Assignment has been updated", "success");
-        //     navigate('/assignments')
-        //     console.log(data)
-        // })
 
     }
 
@@ -73,7 +55,7 @@ const UpdateAssignment = () => {
             <div className="min-h-screen  p-10 lg:px-20 lg:py-20 ">
             <h1 className="text-3xl lg:text-5xl text-[#FFDDB6] p-3 rounded-lg bg-[#92140c] w-fit ">Update Assignment: {title}</h1>
             <form  onSubmit={handleAddPhone} className="lg:space-y-10 form">
-                    <div className=" md:gap-6 ">
+                    <div className=" md:gap-6 mt-10">
                     <div className="relative z-0 w-full mb-6 group">
                         <input defaultValue={title} type="text" name="title"  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Title" required />
                     </div>
@@ -87,7 +69,6 @@ const UpdateAssignment = () => {
                                     <option value="medium">Medium</option>
                                     <option value="hard">Hard</option>
                                 </select>
-                                {/* <input type="text" name="difficulty"  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Difficulty" required /> */}
                             </div>
                         
                             <div className="w-[500px] lg:mx-auto ">

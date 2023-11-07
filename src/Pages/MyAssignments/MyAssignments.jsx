@@ -15,10 +15,7 @@ const MyAssignments = () => {
         axios.get(`http://localhost:5000/myAssignments?email=${user?.email}`, {withCredentials:true})
         .then(data => setAssignments(data.data))
 
-        // fetch(`http://localhost:5000/myAssignments?email=${user?.email}`)
-        // .then(res=>res.json())
-        // .then(data=>setAssignments(data))
-        
+
     },[user?.email])
     return (
         <div>

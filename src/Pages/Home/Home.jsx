@@ -36,7 +36,7 @@ const Home = () => {
           <Navbar></Navbar>
 
           {/* Carousel */}
-          <div className="lg:min-h-screen max-w-7xl mx-auto mt-20">
+          <div className=" max-w-7xl mx-auto mt-20">
           <div className="carousel max-h-[700px]  rounded-xl">
             <div id="slide1" className="carousel-item relative w-full">
               <img src="https://i.ibb.co/9VjMWPk/Untitled-Export-ZLebldtxs-1.jpg" className="w-full" />
