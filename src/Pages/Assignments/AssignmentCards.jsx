@@ -10,6 +10,8 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
     const {_id, email, title, photo, mark, difficulty } = assignment
     const {user} =useContext(AuthContext)
     const Difficulty = upperFirstChar(difficulty)
+
+    
     const handleDelete = email =>{
         console.log(email == user.email)
         if(!user){

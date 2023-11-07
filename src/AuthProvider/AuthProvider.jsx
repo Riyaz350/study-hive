@@ -37,7 +37,7 @@ const AuthProvider = ({children}) => {
             setLoading(false)
             if(currentUser){
                 axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials: true})
-                .then(res => {console.log('token from auth',res.data)})
+                .then()
             }
             else{
                 // console.log('logged out')

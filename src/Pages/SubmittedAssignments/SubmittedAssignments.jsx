@@ -3,15 +3,18 @@ import Footer from "../../Shared/Footer";
 import Navbar from "../../Shared/Navbar";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import SubmittedAssignmentsRow from "./SubmittedAssignmentsRow";
+import axios from "axios";
 
 const SubmittedAssignments = () => {
     const [assignments, setAssignments]= useState([])
 
     const {user} =useContext(AuthContext)
     useEffect(()=>{
-        fetch(`http://localhost:5000/submitted?status=pending`)
-        .then(res=>res.json())
-        .then(data=>setAssignments(data))
+
+        axios.get(`http://localhost:5000/submitted?email=${user?.email}`,{withCredentials:true})
+        .then(data=>setAssignments(data.data))
+
+
         
     },[user?.email])
     return (

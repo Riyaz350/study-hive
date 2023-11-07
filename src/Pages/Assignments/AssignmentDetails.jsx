@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { dateTime } from "../../utilities.js/utilities";
 import { upperFirstChar } from "../../utilities.js/utilities";
+import axios from "axios";
 
 const AssignmentDetails = () => {
     const toDate = new Date()
@@ -25,19 +26,15 @@ const AssignmentDetails = () => {
         if(!link){
             swal('The link field can not be empty', 'Please provide a link', 'error')
         }else{
-            fetch('http://localhost:5000/submitted',{
-                method:'POST',
-                headers:{
-                    'content-type': 'application/json'
-                },
-                body:JSON.stringify(submitAssignment)
-            })
-            .then(res=>res.json())
+
+
+            axios.post(`http://localhost:5000/submitted?email=${user?.email}`, submitAssignment, {withCredentials:true})
             .then(data => {
-                if(data.acknowledged){
+                if(data.status == 200){
                     swal('Assignment Submitted','You will be notified when your results are published', 'success')
-                    e.target.reset()
+                    console.log(data)
                 }
+
             })
         }
     }

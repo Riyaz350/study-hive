@@ -27,10 +27,9 @@ const LogIn = () => {
         signInUser(email, password)
         .then(res=>{            
             const userEmail = {email}
-            console.log(res.user.email)
                     swal("Signed In","Successfully","success");
-                    // e.target.reset()
-                    // navigate(location?.state? location.state :'/')
+                    e.target.reset()
+                    navigate(location?.state? location.state :'/')
 
                     // passing Email to JWT
                     axios.post('http://localhost:5000/jwt', userEmail, {withCredentials:true})
