@@ -11,6 +11,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
 
     const {user} =useContext(AuthContext)
+    console.log(user.email)
     const [numPages, setNumPages] = useState();
     const [pageNumber, setPageNumber] = useState(1);
   
@@ -23,12 +24,11 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
     const handleSubmit = e =>{
         const Mark = e.target.mark.value
         const Feedback = e.target.feedback.value
+        const patchedData = {Mark, Feedback, status: 'Completed' }
         console.log(Mark, Feedback)
 
-        axios.patch(`https://assignment-server-sand.vercel.app/submitted?_id=${_id}&email=${user?.email}`,
-         { status: 'Completed', 
-            marks: Mark, 
-            feedback:Feedback })
+        axios.patch(`https://assignment-server-sand.vercel.app/submitted?id=${_id}&email=${user?.email}`,
+         patchedData, {withCredentials: true})
             .then(data =>{
                 {
                     const filtered = assignments.filter(assignment=> assignment._id !== _id)
@@ -63,7 +63,7 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
                         .map((x,i) =>i+1)
                         .map((page) => {
                             return(
-                            <Page pageNumber={page} renderTextLayer={false} renderAnnotationLayer={false}/>
+                            <Page key={page.id} pageNumber={page} renderTextLayer={false} renderAnnotationLayer={false}/>
                             )
                         })
                         }
