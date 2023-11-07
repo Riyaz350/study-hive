@@ -82,13 +82,13 @@ const Register = () => {
         <div className="">
             
             <Navbar></Navbar>
-            <div data-aos='fade-up' className={"bg-white py-20 lg:p-20"}>
-                <div className={" max-w-xl rounded-3xl mx-auto my-20 py-10 px-5 lg:p-20 bg-white border-2 border-black"}>
+            <div  className={"text-[#92140c]  bg-[#FFDDB6] py-20 lg:p-20"}>
+                <div className={"bg-[#92140c] text-[#FFDDB6] max-w-2xl rounded-3xl mx-auto my-20 py-10 px-5 lg:p-20  border-2 border-black"}>
                     <div className="text-center ">
-                    <h1 className={"text-3xl lg:text-5xl font-bold text-black mb-8"}>Sign Up For Free</h1>
+                    <h1 className={"text-3xl lg:text-5xl font-bold  mb-8"}>Sign Up For Free</h1>
                     </div>
-                    <div className="bg-white  p-10 rounded-xl">
-                    <form onSubmit={handleEmailRegister} className=" ">
+                    <div className="text-[#92140c] bg-[#FFDDB6] p-10 rounded-xl">
+                    <form onSubmit={handleEmailRegister} className="text-base lg:text-lg  ">
 
 
 
@@ -102,7 +102,7 @@ const Register = () => {
 
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-[#0d3454]">Photo Url</span>
+                            <span className="">Photo Url</span>
                         </label>
                         <input onChange={e=>setPhoto(e.target.value)} type="text"  placeholder="Photo Url" className="input input-bordered border-[#0d3454] text-[#0d3454]" required />
                         </div>
@@ -111,7 +111,7 @@ const Register = () => {
 
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-[#0d3454]">Email</span>
+                            <span className=" ">Email</span>
                         </label>
                         <input onChange={e=> setEmail(e.target.value)} type="email"  placeholder="Email" className="input input-bordered border-[#0d3454] text-[#0d3454]" required />
                         </div>
@@ -120,14 +120,14 @@ const Register = () => {
 
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-[#0d3454] ">Password</span>
+                            <span className=" ">Password</span>
                         </label>
                         <input onChange={e=> setPassword(e.target.value)} type="password" placeholder="Password" className="input input-bordered border-[#0d3454]" required />
                         <div>
                         </div>
 
                         <label className="label">
-                            <a href="#" className="label-text-alt text-base text-[#0d3454] link link-hover">Forgot password?</a>
+                            <a href="#" className=" link link-hover">Forgot password?</a>
                         </label>
                         </div>
 

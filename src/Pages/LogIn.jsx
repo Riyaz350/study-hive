@@ -55,29 +55,29 @@ const LogIn = () => {
         
         <div  >
             <Navbar></Navbar>
-            <div data-aos='fade-up' className="py-20 lg:p-20">
-                <div className={` "text-black light-home max-w-xl rounded-3xl mx-auto my-20 py-10 px-5 lg:p-20 border-2 border-black"}`}>
-                    <div className="text-center ">
+            <div  className="py-20 lg:p-20">
+                <div className={` "text-black light-home max-w-xl bg-[#92140c] text-[#FFDDB6] rounded-3xl mx-auto my-20 py-10 px-5 lg:p-20 border-2 border-black"}`}>
+                    <div className="text-center bg-[#92140c] text-[#FFDDB6]">
                     <h1 className="text-3xl mb-10 lg:text-5xl font-bold ">Sign in </h1>
                     </div>
-                    <div className={"bg-white p-10 rounded-xl"}>
-                    <form onSubmit={handleSignIn} className={"bg-white"}>
+                    <div className={" p-10 rounded-xl bg-[#FFDDB6]"}>
+                    <form onSubmit={handleSignIn} className={"text-[#92140c] text-base lg:text-lg bg-[#FFDDB6]"}>
                         <div className="form-control">
                         <label className="label">
-                            <span className={" label-text text-black"}>Email</span>
+                            <span className={" "}>Email</span>
                         </label>
                         <input onChange={e=> setEmail(e.target.value)} type="email"  placeholder="email" className="input input-bordered border-[#0d3454] text-[#0d3454]" required />
                         </div>
                         <div className="form-control">
                         <label className="label">
-                            <span className={"text-black"}>Password</span>
+                            <span className={""}>Password</span>
                         </label>
                         <input onChange={e=> setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered border-[#0d3454]" required />
                         <div>
                         </div>
 
                         <label className="label">
-                            <a href="#" className= {"text-black label-text-alt text-base link link-hover"}>Forgot password?</a>
+                            <a href="#" className= {"  link link-hover"}>Forgot password?</a>
                         </label>
                         </div>
                         <div className="form-control mt-4">
