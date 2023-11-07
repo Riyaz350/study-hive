@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import auth from '../../firebase.config'
+import axios from 'axios';
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
@@ -30,21 +31,21 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{
-            // const userEmail = currentUser?.email || user?.email 
-            // const loggedUser = {email: userEmail}
+            const userEmail = currentUser?.email || user?.email 
+            const loggedUser = {email: userEmail}
             setUser(currentUser)
             setLoading(false)
-            // if(currentUser){
-            //     axios.post('https://cell-central-server.vercel.app/jwt', loggedUser, {withCredentials: true})
-            //     .then(res => {console.log('token from auth',res.data)})
-            // }
-            // else{
-            //     // console.log('logged out')
-            //     axios.post('https://cell-central-server.vercel.app/logout', loggedUser, {withCredentials: true})
-            //     .then(res => {
-            //         console.log(res.data)
-            //     })
-            // }
+            if(currentUser){
+                axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials: true})
+                .then(res => {console.log('token from auth',res.data)})
+            }
+            else{
+                // console.log('logged out')
+                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data)
+                })
+            }
 
 
         })

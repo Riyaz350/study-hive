@@ -6,6 +6,8 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Navbar from "../Shared/Navbar";
 import Footer from "../Shared/Footer";
+import axios from 'axios';
+
 
 const LogIn = () => {
     const navigate = useNavigate()
@@ -23,13 +25,19 @@ const LogIn = () => {
     const handleSignIn = e =>{
         e.preventDefault()
         signInUser(email, password)
-        .then(()=>{            
- 
-                // if(res.data.success){
-                //     swal("Signed In","Successfully","success");
-                //     // e.target.reset()
-                //     // navigate(location?.state? location.state :'/')
-                // }
+        .then(res=>{            
+            const userEmail = {email}
+            console.log(res.user.email)
+                    swal("Signed In","Successfully","success");
+                    // e.target.reset()
+                    // navigate(location?.state? location.state :'/')
+
+                    // passing Email to JWT
+                    axios.post('http://localhost:5000/jwt', userEmail, {withCredentials:true})
+                    .then(res=>{
+                    console.log(res.data)
+                })
+
             })
         .catch((error)=>{
             if(error.code === 'auth/user-not-found'){
