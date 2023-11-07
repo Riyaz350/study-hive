@@ -70,7 +70,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
                   {navLinks}
                 </ul>
               </div>
-              <img className="overflow-hidden w-1/2 lg:w-2/5" src="" alt="" />
+              <img className="overflow-hidden w-1/2 lg:w-2/5" src="https://i.ibb.co/9pg9WtB/logo-no-background.png" alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
               <ul className=" px-1 text-xl text-white space-x-6">
