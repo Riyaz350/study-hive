@@ -61,7 +61,7 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
                         </Document>
                         
                 </div>
-                <input required className="p-2 border-2 border-gray-200 rounded-lg" name="mark" type="number" placeholder='Obtained marks' />
+                <input required className="p-2 border-2 border-gray-200 rounded-lg" name="mark" type="number" max={mark} placeholder='Obtained marks' />
                 <textarea required name="feedback" placeholder="Feedback"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                                
                 <div className='flex justify-between items-center'>
                 <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>

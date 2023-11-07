@@ -18,7 +18,7 @@ const MyAssignments = () => {
     return (
         <div>
             <Navbar></Navbar>
-                <div className="min-h-screen">
+                <div className="lg:min-h-screen">
                 <h1 className="text-4xl mt-10 text-center text-[#FFDDB6] p-3 rounded-lg bg-[#92140c] w-fit mx-auto">Your Assignments</h1>
 
                 <div className="overflow-x-auto max-w-7xl mx-auto  my-5 ">

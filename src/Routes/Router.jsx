@@ -2,7 +2,6 @@ import {
     createBrowserRouter,
   } from "react-router-dom";
 import Root from "../Root/Root";
-import Home from "../Pages/Home";
 import LogIn from "../Pages/LogIn";
 import Register from "../Pages/Register";
 import CreateAssignments from "../Pages/CreateAssignments";
@@ -12,6 +11,7 @@ import UpdateAssignment from "../Pages/UpdateAssignment";
 import AssignmentDetails from "../Pages/Assignments/AssignmentDetails";
 import SubmittedAssignments from "../Pages/SubmittedAssignments/SubmittedAssignments";
 import PrivateRoutes from "./PrivateRoutes";
+import Home from "../Pages/Home/Home";
 
 
 const router = createBrowserRouter([
