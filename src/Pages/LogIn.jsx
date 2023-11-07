@@ -32,7 +32,7 @@ const LogIn = () => {
                     navigate(location?.state? location.state :'/')
 
                     // passing Email to JWT
-                    axios.post('http://localhost:5000/jwt', userEmail, {withCredentials:true})
+                    axios.post('https://assignment-server-sand.vercel.app/jwt', userEmail, {withCredentials:true})
                     .then(res=>{
                     console.log(res.data)
                 })

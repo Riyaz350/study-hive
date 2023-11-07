@@ -33,7 +33,7 @@ const CreateAssignments = () => {
         const description = form.description.value
         const addAssignment = {title,email, difficulty, photo, mark, date, description}
 
-        axios.post(`http://localhost:5000/assignments?email=${user?.email}`, addAssignment, {withCredentials:true})
+        axios.post(`https://assignment-server-sand.vercel.app/assignments?email=${user?.email}`, addAssignment, {withCredentials:true})
         .then(data =>{
                 swal("Assignment Created", "You've created an Assignment", "success");
                 navigate('/assignments')

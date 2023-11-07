@@ -30,7 +30,7 @@ const AssignmentDetails = () => {
         }else{
 
 
-            axios.post(`http://localhost:5000/submitted?email=${user?.email}`, submitAssignment, {withCredentials:true})
+            axios.post(`https://assignment-server-sand.vercel.app/submitted?email=${user?.email}`, submitAssignment, {withCredentials:true})
             .then(data => {
                 if(data.status == 200){
                     swal('Assignment Submitted','You will be notified when your results are published', 'success')

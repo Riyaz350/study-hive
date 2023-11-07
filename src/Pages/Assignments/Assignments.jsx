@@ -9,7 +9,7 @@ const Assignments = () => {
     const [filteredAssignments, setFilteredAssignments] =useState(assignments)
 
     const handleDifficulty = e =>{
-        fetch(`http://localhost:5000/assignments?difficulty=${e.target.value}`)
+        fetch(`https://assignment-server-sand.vercel.app/assignments?difficulty=${e.target.value}`)
         .then(res=>res.json())
         .then(data=> setFilteredAssignments(data))
 

@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
   import.meta.url,
 ).toString();
 import pdf from '../../1.pdf'
+import axios from 'axios';
+import swal from 'sweetalert';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
 
+    const {user} =useContext(AuthContext)
     const [numPages, setNumPages] = useState();
     const [pageNumber, setPageNumber] = useState(1);
   
@@ -20,22 +24,20 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
         const Mark = e.target.mark.value
         const Feedback = e.target.feedback.value
         console.log(Mark, Feedback)
-        fetch(`http://localhost:5000/submitted/${_id}`,{
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ status: 'Completed', 
+
+        axios.patch(`https://assignment-server-sand.vercel.app/submitted?_id=${_id}&email=${user?.email}`,
+         { status: 'Completed', 
             marks: Mark, 
             feedback:Feedback })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                const filtered = assignments.filter(assignment=> assignment._id !== _id)
-                setAssignments(filtered)
-            }
-        })
+            .then(data =>{
+                {
+                    const filtered = assignments.filter(assignment=> assignment._id !== _id)
+                    setAssignments(filtered)
+                    swal("Marks Submitted", "", "success");
+
+                }
+            })
+
     }
     
     return (
@@ -52,13 +54,20 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
                 <form onSubmit={handleSubmit} className=" space-y-2" method="dialog">
                 <h3 className="font-bold text-lg">Link: {link}</h3>
                 <p className=" text-xl">Note: {note}</p>
-                <div className=''>
-                        <p>
-                            Page {pageNumber} of {numPages}
-                        </p>
-                    <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
-                            <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false}/>
-                        </Document>
+                <div className='p-10 m-10'>
+                    <p>
+                        Page {pageNumber} of {numPages}
+                    </p>
+                    <Document file={link} onLoadSuccess={onDocumentLoadSuccess}>
+                        {Array.apply(null, Array(numPages))
+                        .map((x,i) =>i+1)
+                        .map((page) => {
+                            return(
+                            <Page pageNumber={page} renderTextLayer={false} renderAnnotationLayer={false}/>
+                            )
+                        })
+                        }
+                    </Document>
                         
                 </div>
                 <input required className="p-2 border-2 border-gray-200 rounded-lg" name="mark" type="number" max={mark} placeholder='Obtained marks' />
