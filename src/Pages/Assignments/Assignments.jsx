@@ -5,6 +5,8 @@ import Navbar from "../../Shared/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
+
 import  '../../../src/App.css'
 
 const Assignments = () => {
@@ -16,7 +18,6 @@ const Assignments = () => {
     const numberOfPages = Math.ceil(count / assignmentsPerPage);
 
     const pages = [...Array(numberOfPages).keys()];
-    console.log(pages)
 
 
 
@@ -35,7 +36,6 @@ const Assignments = () => {
         fetch(`https://assignment-server-sand.vercel.app/assignments?difficulty=${e.target.value}`)
         .then(res=>res.json())
         .then(data=> {
-            setAssignmentsPerPage(data.length)
             setFilteredAssignments(data)
         })
 
@@ -44,7 +44,6 @@ const Assignments = () => {
     // PAGINATION FUNCTIONS
     const handleAssignmentsPerPage = e => {
         const val = parseInt(e.target.value);
-        console.log(val);
         setAssignmentsPerPage(val);
         setCurrent(0);
     }
@@ -62,21 +61,30 @@ const Assignments = () => {
         }
     }
 
+
+
+
     return (
         <div className="">
+            
             <Navbar></Navbar>
             <div className=" max-w-7xl space-y-5 items-center mx-auto mt-10">
                 <div className=" text-center ">
-                    <h1 className="text-4xl text-[#FFF5EB] p-3 rounded-lg bg-[#92140c] w-fit mx-auto">Available Assignments</h1>
-               
-                <div className="mt-10 lg:mt-0 flex lg:justify-end justify-center h-2/3 items-center ">
-                    <select onChange={handleDifficulty} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg">
+                    <h1 className="text-[#FFF5EB] p-3 rounded-lg bg-[#92140c] w-fit mx-auto text-xl lg:text-4xl  ">Available Assignments </h1>
+                <div 
+                 className="mt-10 lg:mt-0 flex lg:justify-end justify-center h-2/3 items-center ">
+                    <select
+                    onChange={handleDifficulty} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg"
+          
+          >
                         <option value="">All</option>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
-                    </select>
+                        </select>
                 </div>
+                    
+
                 </div>
             </div>
             <div  className="lg:grid grid-cols-3 gap-10 max-w-7xl mx-auto my-10">
@@ -114,6 +122,7 @@ const Assignments = () => {
             </div>
             </div>
             }
+            
         <Footer></Footer>
         </div>
     );

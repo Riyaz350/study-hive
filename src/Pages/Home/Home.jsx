@@ -8,6 +8,7 @@ import { pdfjs } from 'react-pdf';
 import { useEffect, useState } from 'react';
 import Review from '../../Components/review';
 import Featured from './Featured/Featured';
+import { motion } from "framer-motion"
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
@@ -27,7 +28,6 @@ const Home = () => {
     .then(data => setReviews(data))
 
   },[])
-
 
 
 
@@ -64,7 +64,9 @@ const Home = () => {
           </div>
 
           {/* FEATURED */}
+          
           <Featured></Featured>
+
 
           {/* FAQ */}
           <div className='p-5 rounded-2xl mb-10 max-h-30 bg-[#92140c] border-black lg:w-1/2 mx-auto'>

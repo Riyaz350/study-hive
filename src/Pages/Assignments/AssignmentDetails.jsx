@@ -8,6 +8,7 @@ import { dateTime } from "../../utilities.js/utilities";
 import { upperFirstChar } from "../../utilities.js/utilities";
 import axios from "axios";
 
+
 const AssignmentDetails = () => {
     const toDate = new Date()
     const assignment = useLoaderData()
@@ -15,7 +16,7 @@ const AssignmentDetails = () => {
     const { title, photo, mark, difficulty, date, description } = assignment
     const Difficulty = upperFirstChar(difficulty)
 
-
+     
     // Assignment Submission
     const handleSubmit = e =>{
         const form = e.target
@@ -56,11 +57,11 @@ const AssignmentDetails = () => {
                         <div className="card-actions justify-center">
 
 
-                        {/* You can open the modal using document.getElementById('ID').showModal() method */}
                             <button className="btn font-bold bg-[#1e1e24] border-2 border-[#1e1e24] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById('my_modal_3').showModal()}>Take Assignment</button>
                             <dialog id="my_modal_3" className="modal">
                             <div className="modal-box bg-[#FFDDB6]">
                                 <form onSubmit={handleSubmit} className="space-y-2" method="dialog">
+                                
                                 <h3 className="font-bold text-lg">Submission Form</h3>
                                 <p className=" text-xl">Put your PDF link here & click submit</p>
                                 <input required className="p-2 border-2 w-full border-gray-200 rounded-lg" name="link" type="text" placeholder='Provide your PDF link ' />

@@ -34,12 +34,12 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
       }
     
   },[user])
-
+// isSelected ? <motion.div layoutId="underline" /> : null
 
 
   // reused
   const navLinks = <>
-      <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/">Home</NavLink>
+      <NavLink className={({ isActive, isPending,  }) =>isPending ? "pending" : isActive ? active : inActive} to="/">Home</NavLink>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/assignments">Assignments</NavLink>
       {user? <>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/createAssignments">Create Assignments</NavLink>
