@@ -82,7 +82,6 @@ const Assignments = () => {
             </div>
 
             {/* Pagination */}
-            {/* [#FFDDB6] [#92140c] */}
                     <div className="  page "></div>
             <div className='flex flex-col max-w-fit px-10 py-2 rounded-full mx-auto mb-10 justify-center items-center text-xs lg:text-base  text-[#92140c] font-bold border-4 border-[#92140c]'>
                 <div className="flex max-w-fit items-center justify-center gap-5 lg:gap-20">
