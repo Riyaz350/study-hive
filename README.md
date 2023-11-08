@@ -1,8 +1,10 @@
-# React + Vite
+# Some of the features of this website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- This website is an educational website and it will help students to create and submit assignments of any subject.
+- There are 3 featured assignments in the home pate that are currently very popular.
+- Any logged in user can also update the available assignments and make them better.
+- But only the creator of an assignment can delete that assignment, no one else can do that.
+- Any user can view the details of the available assignments and submit their work.
+- The submitted assignments can be visible in the submitted assignments list with the submitted time and date.
+- Also every user can see all of their submitted assignments in the My assignment page with obtained marks if they are marked.
+- While giving mark the user can see the preview of the Assignment if it is a pdf file. 
