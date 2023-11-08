@@ -2,11 +2,32 @@ import { useLoaderData } from "react-router-dom";
 import AssignmentCards from "./AssignmentCards";
 import Footer from "../../Shared/Footer";
 import Navbar from "../../Shared/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+import  '../../../src/App.css'
 
 const Assignments = () => {
+    const [assignmentsPerPage, setAssignmentsPerPage] = useState(6)
+    const [current, setCurrent] =useState(0)
+    const [count, setCount] = useState(0)
+
+    const numberOfPages = Math.ceil(count / assignmentsPerPage);
+
+    const pages = [...Array(numberOfPages).keys()];
+    console.log(pages)
+
+
+
     const assignments = useLoaderData()
     const [filteredAssignments, setFilteredAssignments] =useState(assignments)
+
+    useEffect(()=>{
+        axios.get(`https://assignment-server-sand.vercel.app/assignmentsCount`)
+        .then(data => setCount(data.data.count))
+        axios.get(`https://assignment-server-sand.vercel.app/pagination?page=${current}&size=${assignmentsPerPage}`)
+        .then(data => setFilteredAssignments(data.data))
+    },[current, assignmentsPerPage])
 
     const handleDifficulty = e =>{
         fetch(`https://assignment-server-sand.vercel.app/assignments?difficulty=${e.target.value}`)
@@ -14,6 +35,28 @@ const Assignments = () => {
         .then(data=> setFilteredAssignments(data))
 
     }
+
+    // PAGINATION FUNCTIONS
+    const handleAssignmentsPerPage = e => {
+        const val = parseInt(e.target.value);
+        console.log(val);
+        setAssignmentsPerPage(val);
+        setCurrent(0);
+    }
+
+
+    const handlePrev = () =>{
+        if(current>0){
+            setCurrent(current -1)
+        }
+    }
+    const handleNext = () =>{
+        if(current < pages.length-1){
+            
+            setCurrent(current +1)
+        }
+    }
+
     return (
         <div className="">
             <Navbar></Navbar>
@@ -36,6 +79,31 @@ const Assignments = () => {
             {
                 filteredAssignments.map(assignment => <AssignmentCards key={assignment._id} filteredAssignment={filteredAssignments} assignment={assignment} setFilteredAssignments={setFilteredAssignments}></AssignmentCards>)
             }
+            </div>
+
+            {/* Pagination */}
+            {/* [#FFDDB6] [#92140c] */}
+                    <div className="  page "></div>
+            <div className='flex flex-col max-w-fit px-10 py-2 rounded-full mx-auto mb-10 justify-center items-center text-xs lg:text-base  text-[#92140c] font-bold border-4 border-[#92140c]'>
+                <div className="flex max-w-fit items-center justify-center gap-5 lg:gap-20">
+                <button className="bg-[#92140c] text-[#FFDDB6] rounded-full p-2" onClick={handlePrev}>Prev</button>
+                <div className="flex gap-5 lg:gap-20">
+                {
+                    pages.map(page => <button
+                        className={current === page ? 'activePage' : undefined}
+                        onClick={() => setCurrent(page)}
+                        key={page}
+                    >{page}</button>)
+                }
+                </div>
+                <button onClick={handleNext} className="bg-[#92140c] text-[#FFDDB6] rounded-full p-2">Next</button>
+                <select value={assignmentsPerPage} onChange={handleAssignmentsPerPage} name="" id="">
+                    <option value="3">3</option>
+                    <option value="6">6</option>
+                    <option value="9">9</option>
+                    <option value="12">12</option>
+                </select>
+                </div>
             </div>
         <Footer></Footer>
         </div>
