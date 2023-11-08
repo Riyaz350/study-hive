@@ -54,7 +54,13 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
                 <form onSubmit={handleSubmit} className=" space-y-2" method="dialog">
                 <h3 className="font-bold text-lg">Link: {link}</h3>
                 <p className=" text-xl">Note: {note}</p>
-                <div className='p-10 m-10'>
+
+
+                <object className='w-full h-[800px]' data={link} type="application/pdf">
+                    {/* <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p> */}
+                </object>
+
+                {/* <div className='p-10 m-10'>
                     <p>
                         Page {pageNumber} of {numPages}
                     </p>
@@ -69,7 +75,9 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
                         }
                     </Document>
                         
-                </div>
+                </div> */}
+
+
                 <input required className="p-2 border-2 border-gray-200 rounded-lg" name="mark" type="number" max={mark} placeholder='Obtained marks' />
                 <textarea required name="feedback" placeholder="Feedback"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                                
                 <div className='flex justify-between items-center'>

@@ -7,12 +7,12 @@ const FeaturedCard = ({assignment}) => {
 
     return (
         <div className="mb-10 lg:mb-0">
-            <div className="p-2 h-full bg-[#92140c] text-[#FFDDB6] card items-center justify-between gap-5 w-4/5 mx-auto lg:w-96  shadow-xl">
+            <div className="p-2 h-full bg-[#92140c] text-[#FFDDB6] card items-center justify-between gap-5 mx-auto lg:w-96  shadow-xl">
                 <div className="w-fit">
                 <img className="w-fit rounded-lg" src={photo} alt="Shoes" />
                 </div>
                 <div className=" text-start w-full flex flex-col gap-2">
-                    <h2 className="lg:card-title text-3xl">{title}</h2>
+                    <h2 className="lg:card-title text-xl lg:text-3xl">{title}</h2>
                     <p>Marks: {mark}</p>
                     <p>Difficulty: {Difficulty}</p>
                     <div className="card-actions lg:justify-center mb-2">

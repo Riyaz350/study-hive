@@ -11,6 +11,7 @@ const Assignments = () => {
     const [assignmentsPerPage, setAssignmentsPerPage] = useState(6)
     const [current, setCurrent] =useState(0)
     const [count, setCount] = useState(0)
+    const [diff, setDiff] =useState('')
 
     const numberOfPages = Math.ceil(count / assignmentsPerPage);
 
@@ -30,9 +31,13 @@ const Assignments = () => {
     },[current, assignmentsPerPage])
 
     const handleDifficulty = e =>{
+        setDiff(e.target.value)
         fetch(`https://assignment-server-sand.vercel.app/assignments?difficulty=${e.target.value}`)
         .then(res=>res.json())
-        .then(data=> setFilteredAssignments(data))
+        .then(data=> {
+            setAssignmentsPerPage(data.length)
+            setFilteredAssignments(data)
+        })
 
     }
 
@@ -82,7 +87,10 @@ const Assignments = () => {
             </div>
 
             {/* Pagination */}
-                    <div className="  page "></div>
+            {diff? <div></div> :
+            
+            <div>
+                <div className="  page "></div>
             <div className='flex flex-col max-w-fit px-10 py-2 rounded-full mx-auto mb-10 justify-center items-center text-xs lg:text-base  text-[#92140c] font-bold border-4 border-[#92140c]'>
                 <div className="flex max-w-fit items-center justify-center gap-5 lg:gap-20">
                 <button className="bg-[#92140c] text-[#FFDDB6] rounded-full p-2" onClick={handlePrev}>Prev</button>
@@ -104,6 +112,8 @@ const Assignments = () => {
                 </select>
                 </div>
             </div>
+            </div>
+            }
         <Footer></Footer>
         </div>
     );

@@ -62,8 +62,8 @@ const AssignmentDetails = () => {
                             <div className="modal-box bg-[#FFDDB6]">
                                 <form onSubmit={handleSubmit} className="space-y-2" method="dialog">
                                 <h3 className="font-bold text-lg">Submission Form</h3>
-                                <p className=" text-xl">Put your PDF Google Drove link here & click submit</p>
-                                <input required className="p-2 border-2 border-gray-200 rounded-lg" name="link" type="text" placeholder='Provide your PDF link ' />
+                                <p className=" text-xl">Put your PDF link here & click submit</p>
+                                <input required className="p-2 border-2 w-full border-gray-200 rounded-lg" name="link" type="text" placeholder='Provide your PDF link ' />
                                 <textarea  name="note" placeholder="Quick Notes"  className="textarea textarea-bordered textarea-lg w-full " ></textarea>                             
                                 <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]">Submit</button>
                                 </form>

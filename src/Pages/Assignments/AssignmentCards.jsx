@@ -62,15 +62,15 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                 </div>
                 <div className=" text-start w-full flex flex-col gap-2">
                     <div className="flex flex-col gap-2 px-4">
-                    <h2 className="lg:card-title text-3xl">{title}</h2>
+                    <h2 className="lg:card-title text-xl lg:text-3xl">{title}</h2>
                     <p>Marks: {mark}</p>
                     <p>Difficulty: {Difficulty}</p>
                     </div>
                     <div className="card-actions lg:justify-center mb-2">
-                    <div className="gap-2 flex flex-col  w-full ">
-                    <Link to={`/assignmentDetails/${_id}`} className="btn w-full text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">View Assignment</Link>
-                    <Link to={`/updateAssignment/${_id}`} className="btn w-full text-sm  bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Update Assignment</Link>
-                    {user? <Link onClick={()=>handleDelete(email)} className="btn w-full text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Delete Assignment</Link>: <div></div>}
+                    <div className="gap-2 flex flex-col  w-full">
+                    <Link to={`/assignmentDetails/${_id}`} className="btn w-full text-xs lg:text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">View Assignment</Link>
+                    <Link to={`/updateAssignment/${_id}`} className="btn w-full text-xs lg:text-sm  bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Update Assignment</Link>
+                    {user? <Link onClick={()=>handleDelete(email)} className="btn w-full text-xs lg:text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Delete Assignment</Link>: <div></div>}
                     
                     </div>
                     </div>
