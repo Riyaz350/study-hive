@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import swal from 'sweetalert';
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { motion } from "framer-motion"
+
 
 
 
@@ -81,8 +83,8 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
                   <div className="flex  lg:flex-row  justify-center lg:justify-end items-center gap-4  lg:w-full">
                     <div className="flex flex-row justify-center items-center gap-4">
                       <div className="flex  gap-6 justify-center">
-                      <div className="relative group w-[100px]">
-                      <img src={photo}  alt="" className="w-[50px] mx-auto rounded-lg"/>
+                      <div  className="relative group w-[100px]">
+                      <motion.img  whileHover={{ borderRadius: "50px", scale: 1.2 }} initial={ { borderRadius: "10px", scale: 1 }}  src={photo}  alt="" className="w-[50px] mx-auto rounded-lg"/>
                         <div className="absolute top-[50px] rounded-lg inset-0 hidden group-hover:block  text-white text-center">
                             <p className="text-sm bg-[#92140c] rounded-lg w-full  font-semibold">{userName}</p>
                         </div>

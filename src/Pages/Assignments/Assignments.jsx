@@ -4,6 +4,8 @@ import Footer from "../../Shared/Footer";
 import Navbar from "../../Shared/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { motion } from "framer-motion"
+
 
 
 
@@ -64,6 +66,8 @@ const Assignments = () => {
 
 
 
+
+
     return (
         <div className="">
             
@@ -71,9 +75,9 @@ const Assignments = () => {
             <div className=" max-w-7xl space-y-5 items-center mx-auto mt-10">
                 <div className=" text-center ">
                     <h1 className="text-[#FFF5EB] p-3 rounded-lg bg-[#92140c] w-fit mx-auto text-xl lg:text-4xl  ">Available Assignments </h1>
-                <div 
+                <div
                  className="mt-10 lg:mt-0 flex lg:justify-end justify-center h-2/3 items-center ">
-                    <select
+                    <select  
                     onChange={handleDifficulty} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg"
           
           >
@@ -97,7 +101,7 @@ const Assignments = () => {
             {/* Pagination */}
             {diff? <div></div> :
             
-            <div>
+            <motion.div  whileHover={{ scale: 1.1 }} >
                 <div className="  page "></div>
             <div className='flex flex-col max-w-fit px-10 py-2 rounded-full mx-auto mb-10 justify-center items-center text-xs lg:text-base  text-[#92140c] font-bold border-4 border-[#92140c]'>
                 <div className="flex max-w-fit items-center justify-center gap-5 lg:gap-20">
@@ -120,7 +124,7 @@ const Assignments = () => {
                 </select>
                 </div>
             </div>
-            </div>
+            </motion.div>
             }
             
         <Footer></Footer>

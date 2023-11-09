@@ -7,6 +7,8 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import Navbar from "../Shared/Navbar";
 import Footer from "../Shared/Footer";
 import axios from 'axios';
+import { motion } from "framer-motion"
+
 
 
 const LogIn = () => {
@@ -58,6 +60,17 @@ const LogIn = () => {
         })
     }
 
+
+
+    const goggle = {
+        hover: {
+          scale: 1.2, // Example: increase the scale of the parent on hover
+        },
+      };
+    
+
+
+
     return (
         
         <div  >
@@ -98,7 +111,7 @@ const LogIn = () => {
                             </div>
                     </form>
                     <div className="flex justify-center items-center">
-                            <button onClick={handleGoogleSignIn} className="btn  sm:btn-sm md:btn-md lg:btn-lg my-4 hover:bg-red-700 hover:text-white"><FcGoogle/> Sign In With Google</button>
+                            <motion.button variants={goggle} whileHover="hover" transition={{ duration: 0.2 }} onClick={handleGoogleSignIn} className="btn  sm:btn-sm md:btn-md lg:btn-lg my-4 hover:bg-red-700 hover:text-white"> <FcGoogle/> Sign In With Google </motion.button>
                             </div>
                     </div>
                 </div>

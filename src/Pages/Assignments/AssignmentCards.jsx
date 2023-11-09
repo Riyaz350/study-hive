@@ -4,6 +4,8 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
 import { upperFirstChar } from "../../utilities.js/utilities";
+import { motion } from "framer-motion"
+
 
 const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments}) => {
     
@@ -55,7 +57,7 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
     
 
     return (
-            <div className="mb-10 lg:mb-0">
+            <motion.div  whileHover={{ scale: 1.1 }}  className="mb-10 lg:mb-0">
             <div className="p-2 bg-[#92140c] text-[#FFDDB6] card items-center justify-between h-full gap-5 w-4/5 mx-auto lg:w-96  shadow-xl">
                 <div className="w-fit">
                 <img className="w-fit rounded-lg" src={photo} alt="Shoes" />
@@ -68,16 +70,18 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                     </div>
                     <div className="card-actions lg:justify-center mb-2">
                     <div className="gap-2 flex flex-col  w-full">
-                    <Link to={`/assignmentDetails/${_id}`} className="btn w-full text-xs lg:text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">View Assignment</Link>
-                    <Link to={`/updateAssignment/${_id}`} className="btn w-full text-xs lg:text-sm  bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Update Assignment</Link>
-                    {user? <Link onClick={()=>handleDelete(email)} className="btn w-full text-xs lg:text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Delete Assignment</Link>: <div></div>}
+                    <Link  to={`/assignmentDetails/${_id}`} className="btn w-full text-xs lg:text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">View Assignment</Link>
+                    <Link  to={`/updateAssignment/${_id}`} className="btn w-full text-xs lg:text-sm  bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Update Assignment</Link>
+                    {user? <Link  onClick={()=>handleDelete(email)} className="btn w-full text-xs lg:text-sm bg-[#FFDDB6] text-black border-2 border-[#FFDDB6]  rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]">Delete Assignment</Link>: <div></div>}
                     
                     </div>
                     </div>
                 </div>
             </div>
-        </div>        
+        </motion.div>        
     );
 };
+
+
 
 export default AssignmentCards;

@@ -1,23 +1,19 @@
-import { useContext, useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
+import { useContext } from 'react';
+import {  pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
   import.meta.url,
 ).toString();
-import pdf from '../../1.pdf'
 import axios from 'axios';
 import swal from 'sweetalert';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { motion } from "framer-motion"
+
 const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
 
     const {user} =useContext(AuthContext)
     console.log(user.email)
-    const [numPages, setNumPages] = useState();
-    const [pageNumber, setPageNumber] = useState(1);
-  
-    function onDocumentLoadSuccess({ numPages }) {
-      setNumPages(numPages);
-    }
+
 
     const {_id, link, note, name, title, mark, submissionTime } = assignment
 
@@ -48,7 +44,7 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
         <th>{submissionTime}</th>
 
         <th>
-            <button className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById(_id).showModal()}>Give Mark</button>
+            <motion.button  whileHover={{scale:1.1}} whileTap={{scale:0.9}} className="btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#92140c]" onClick={()=>document.getElementById(_id).showModal()}>Give Mark</motion.button>
             <dialog id={_id} className="modal max-w-6xl mx-auto">
             <div className="modal-box max-w-6xl bg-[#FFDDB6]">
                 <form onSubmit={handleSubmit} className=" space-y-2" method="dialog">
@@ -57,25 +53,9 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
 
 
                 <object className='w-full h-[800px]' data={link} type="application/pdf">
-                    {/* <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p> */}
                 </object>
 
-                {/* <div className='p-10 m-10'>
-                    <p>
-                        Page {pageNumber} of {numPages}
-                    </p>
-                    <Document file={link} onLoadSuccess={onDocumentLoadSuccess}>
-                        {Array.apply(null, Array(numPages))
-                        .map((x,i) =>i+1)
-                        .map((page) => {
-                            return(
-                            <Page key={page.id} pageNumber={page} renderTextLayer={false} renderAnnotationLayer={false}/>
-                            )
-                        })
-                        }
-                    </Document>
-                        
-                </div> */}
+
 
 
                 <input required className="p-2 border-2 border-gray-200 rounded-lg" name="mark" type="number" max={mark} placeholder='Obtained marks' />

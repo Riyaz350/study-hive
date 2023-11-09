@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { upperFirstChar } from "../../../utilities.js/utilities";
+import { motion } from "framer-motion"
+
 
 const FeaturedCard = ({assignment}) => {
     const {_id, title, photo, difficulty, mark} =assignment
     const Difficulty = upperFirstChar(difficulty)
 
     return (
-        <div className="mb-10 lg:mb-0">
+        <motion.div  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className="mb-10 lg:mb-0">
             <div className="p-2 h-full bg-[#92140c] text-[#FFDDB6] card items-center justify-between gap-5 mx-auto lg:w-96  shadow-xl">
                 <div className="w-fit">
                 <img className="w-fit rounded-lg" src={photo} alt="Shoes" />
@@ -23,7 +25,7 @@ const FeaturedCard = ({assignment}) => {
                     </div>
                 </div>
             </div>
-            </div>   
+            </motion.div>   
     );
 };
 

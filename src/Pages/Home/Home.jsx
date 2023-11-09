@@ -69,7 +69,7 @@ const Home = () => {
 
 
           {/* FAQ */}
-          <div className='p-5 rounded-2xl mb-10 max-h-30 bg-[#92140c] border-black lg:w-1/2 mx-auto'>
+          <div className='p-5 rounded-2xl mb-10 max-h-30 bg-[#92140c] border-black lg:w-1/2 mx-auto cursor-pointer'>
           <h1 className="text-xl lg:text-2xl  bg-[#FFDDB6] px-2 my-2 rounded-lg text-[#92140c] w-fit mx-auto">FAQ</h1>
           <Swiper
         slidesPerView={1}
