@@ -2,7 +2,7 @@
 
 Assignment_category_0001
 
-Live link: https://654c500c41313025c2f09cc4--superlative-lokum-c289a2.netlify.app/
+Live link:  https://654cd5cfb5dcf737fa94267f--superlative-lokum-c289a2.netlify.app
 
 - This website is an educational website and it will help students to create and submit assignments of any subject.
 - There are 3 featured assignments in the home pate that are currently very popular.
