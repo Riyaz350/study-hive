@@ -14,8 +14,8 @@ import { motion } from "framer-motion"
   const { user, logOut} =useContext(AuthContext)
 
   // NavLink classes
-  const active = 'btn font-bold bg-[#1e1e24] border-2 border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#FFDDB6]'
-  const inActive = 'btn bg-[#FFDDB6] text-black border-2 border-[#FFDDB6] rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]'
+  const active = 'btn font-bold bg-[#1e1e24] border-2 lg:w-auto w-full border-[#FFDDB6] text-[#FFDDB6] rounded-lg hover:bg-[#FFDDB6] hover:text-[#92140c] hover:border-[#FFDDB6]'
+  const inActive = 'btn bg-[#FFDDB6] text-black border-2 lg:w-auto w-full border-[#FFDDB6] rounded-lg hover:bg-[#92140c] hover:border-[#FFDDB6] hover:text-[#FFDDB6]'
 
 
 
@@ -40,15 +40,18 @@ import { motion } from "framer-motion"
 
 
   // reused
-  const navLinks = <>
+  const navLinks = < div className=" lg:flex items-center gap-6 space-y-1">
       <NavLink className={({ isActive, isPending,  }) =>isPending ? "pending" : isActive ? active : inActive} to="/">Home</NavLink>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/assignments">Assignments</NavLink>
       {user? <>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/createAssignments">Create Assignments</NavLink>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/myAssignments">My Assignments</NavLink>
       <NavLink className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? active : inActive} to="/submittedAssignments">Submitted Assignments</NavLink>
-      </>: <div></div>}
-       </>
+      </>: 
+      <div></div>
+
+        }
+       </div>
       
 
       
@@ -83,12 +86,15 @@ import { motion } from "framer-motion"
                   <div className="flex  lg:flex-row  justify-center lg:justify-end items-center gap-4  lg:w-full">
                     <div className="flex flex-row justify-center items-center gap-4">
                       <div className="flex  gap-6 justify-center">
-                      <div  className="relative group w-[100px]">
+                      
+                       <div  className="relative group w-[100px]">
                       <motion.img  whileHover={{ borderRadius: "50px", scale: 1.2 }} initial={ { borderRadius: "10px", scale: 1 }}  src={photo}  alt="" className="w-[50px] mx-auto rounded-lg"/>
                         <div className="absolute top-[50px] rounded-lg inset-0 hidden group-hover:block  text-white text-center">
                             <p className="text-sm bg-[#92140c] rounded-lg w-full  font-semibold">{userName}</p>
                         </div>
                         </div>
+                     
+
                       <Link onClick={handleLogOut} className='btn text-black bg-[#FFDDB6] border-[#FFDDB6] font-bold border-2 rounded-2xl hover:bg-[#1e1e24] hover:border-[#FFDDB6] hover:text-[#FFDDB6]'>Log out</Link>
                     
                     </div>

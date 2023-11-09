@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import AssignmentCards from "./AssignmentCards";
 import Footer from "../../Shared/Footer";
 import Navbar from "../../Shared/Navbar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion"
 
@@ -10,8 +10,10 @@ import { motion } from "framer-motion"
 
 
 import  '../../../src/App.css'
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Assignments = () => {
+    const {user} =useContext(AuthContext)
     const [assignmentsPerPage, setAssignmentsPerPage] = useState(6)
     const [current, setCurrent] =useState(0)
     const [count, setCount] = useState(0)
@@ -72,6 +74,8 @@ const Assignments = () => {
         <div className="">
             
             <Navbar></Navbar>
+            {count?
+            <div>
             <div className=" max-w-7xl space-y-5 items-center mx-auto mt-10">
                 <div className=" text-center ">
                     <h1 className="text-[#FFF5EB] p-3 rounded-lg bg-[#92140c] w-fit mx-auto text-xl lg:text-4xl  ">Available Assignments </h1>
@@ -91,12 +95,17 @@ const Assignments = () => {
 
                 </div>
             </div>
-            <div  className="lg:grid grid-cols-3 gap-10 max-w-7xl mx-auto my-10">
 
-            {
-                filteredAssignments.map(assignment => <AssignmentCards key={assignment._id} filteredAssignment={filteredAssignments} assignment={assignment} setFilteredAssignments={setFilteredAssignments}></AssignmentCards>)
-            }
-            </div>
+            
+                  
+                <div  className="lg:grid grid-cols-3 gap-10 max-w-7xl mx-auto my-10">
+                    
+                {
+                    filteredAssignments.map(assignment => <AssignmentCards key={assignment._id} filteredAssignment={filteredAssignments} assignment={assignment} setFilteredAssignments={setFilteredAssignments}></AssignmentCards>)
+                }
+            
+                </div>
+           
 
             {/* Pagination */}
             {diff? <div></div> :
@@ -126,7 +135,11 @@ const Assignments = () => {
             </div>
             </motion.div>
             }
-            
+            </div>: 
+            <div className="max-w-1/2"> 
+                <span className="loading loading-infinity block mx-auto w-1/4 "></span>
+            </div>
+}
         <Footer></Footer>
         </div>
     );
