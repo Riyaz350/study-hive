@@ -3,6 +3,8 @@
 
 Live link:  https://654cd5cfb5dcf737fa94267f--superlative-lokum-c289a2.netlify.app
 
+Server side link: https://github.com/Riyaz350/study-hive-server
+
 - This website is an educational website and it will help students to create and submit assignments of any subject.
 - There are 3 featured assignments in the home pate that are currently very popular.
 - Any logged in user can also update the available assignments and make them better.
