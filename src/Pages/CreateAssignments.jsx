@@ -17,6 +17,7 @@ const CreateAssignments = () => {
     const navigate = useNavigate()
     const [startDate, setStartDate] = useState(new Date());
     const [difficultyValue, setDifficultyValue] = useState('easy')
+    const [subjectValue, setSubjectValue] = useState('Math')
     const day = startDate.getDate()
     const month = startDate.getMonth()
     const year = startDate.getFullYear()
@@ -28,12 +29,13 @@ const CreateAssignments = () => {
         const title = form.title.value
         const difficulty = difficultyValue
         const photo = form.photo.value
+        const subject = subjectValue
         const mark = form.mark.value
         const date = day+'/'+month+'/'+year
         const description = form.description.value
-        const addAssignment = {title,email, difficulty, photo, mark, date, description}
+        const addAssignment = {title,email, difficulty, photo, mark,subject, date, description}
 
-        axios.post(`https://assignment-server-sand.vercel.app/assignments?email=${user?.email}`, addAssignment, {withCredentials:true})
+        axios.post(`http://localhost:5000/assignments?email=${user?.email}`, addAssignment, {withCredentials:true})
         .then(data =>{
                 swal("Assignment Created", "You've created an Assignment", "success");
                 navigate('/assignments')
@@ -47,6 +49,10 @@ const CreateAssignments = () => {
     const handleDifficulty = e =>{
         const difficulty = e.target.value
         setDifficultyValue(difficulty)
+    }
+    const handleSubject = e =>{
+        const difficulty = e.target.value
+        setSubjectValue(difficulty)
     }
 
     return (
@@ -71,10 +77,19 @@ const CreateAssignments = () => {
                                 </select>
                                 {/* <input type="text" name="difficulty"  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Difficulty" required /> */}
                             </div>
+                            <div className="relative text-xl lg:text-3xl lg:w-[500px] mr-auto">
+                                <select className="bg-[#92140c] text-[#FFDDB6] " onChange={handleSubject}>
+                                    <option value="math">Math</option>
+                                    <option value="cse">CSE</option>
+                                    <option value="finance">Finance</option>
+                                </select>
+                                {/* <input type="text" name="difficulty"  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Difficulty" required /> */}
+                            </div>
                         
                             <div className="lg:w-[500px] mx-auto  text-[#FFDDB6]">
                             <DatePicker className="lg:text-3xl bg-[#92140c] text-center text-xl" selected={startDate} onChange={(date)  => setStartDate(date)} />
                             </div>
+
                             
                             <div className="relative z-0 lg:w-[500px] ml-auto mb-6 group">
                                 <input type="number" name="mark" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Mark" required />

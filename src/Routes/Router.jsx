@@ -47,17 +47,17 @@ const router = createBrowserRouter([
           {
             path:'/assignments',
             element:<Assignments></Assignments>,
-            loader:()=>fetch('https://assignment-server-sand.vercel.app/assignments')
+            loader:()=>fetch('http://localhost:5000/assignments')
           },
           {
             path:'/updateAssignment/:id',
             element:<PrivateRoutes><UpdateAssignment></UpdateAssignment></PrivateRoutes>,
-            loader:({params})=> fetch(`https://assignment-server-sand.vercel.app/assignments/${params.id}`)
+            loader:({params})=> fetch(`http://localhost:5000/assignments/${params.id}`)
           },
           {
             path:'/assignmentDetails/:id',
             element:<PrivateRoutes><AssignmentDetails></AssignmentDetails></PrivateRoutes>,
-            loader:({params})=> fetch(`https://assignment-server-sand.vercel.app/assignments/${params.id}`)
+            loader:({params})=> fetch(`http://localhost:5000/assignments/${params.id}`)
 
           }
       ],

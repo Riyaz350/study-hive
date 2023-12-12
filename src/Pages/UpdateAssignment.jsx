@@ -35,7 +35,7 @@ const UpdateAssignment = () => {
         const date = day+'/'+month+'/'+year
         const description = form.description.value
         const updateAssignment = {title,email, difficulty, photo, mark, date, description}
-        axios.put(`https://assignment-server-sand.vercel.app/assignments?_id=${_id}&email=${user?.email}`, updateAssignment, {withCredentials:true})
+        axios.put(`http://localhost:5000/assignments?_id=${_id}&email=${user?.email}`, updateAssignment, {withCredentials:true})
         .then(data =>{
                 swal("Assignment Updated", "The Assignment has been updated", "success");
                 navigate('/assignments')

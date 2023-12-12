@@ -31,7 +31,7 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                 console.log(result)
                 if (result.isConfirmed) {
                     console.log(_id)
-            fetch(`https://assignment-server-sand.vercel.app/assignments/${_id}`,{
+            fetch(`http://localhost:5000/assignments/${_id}`,{
                 method:"DELETE"
             })
             .then(res => res.json())

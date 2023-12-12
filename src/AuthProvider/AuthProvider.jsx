@@ -36,12 +36,12 @@ const AuthProvider = ({children}) => {
             setUser(currentUser)
             setLoading(false)
             if(currentUser){
-                axios.post('https://assignment-server-sand.vercel.app/jwt', loggedUser, {withCredentials: true})
+                axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials: true})
                 .then()
             }
             else{
                 // console.log('logged out')
-                axios.post('https://assignment-server-sand.vercel.app/logout', loggedUser, {withCredentials: true})
+                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
                 .then(res => {
                     console.log(res.data)
                 })

@@ -29,15 +29,15 @@ const Assignments = () => {
     const [filteredAssignments, setFilteredAssignments] =useState(assignments)
 
     useEffect(()=>{
-        axios.get(`https://assignment-server-sand.vercel.app/assignmentsCount`)
+        axios.get(`http://localhost:5000/assignmentsCount`)
         .then(data => setCount(data.data.count))
-        axios.get(`https://assignment-server-sand.vercel.app/pagination?page=${current}&size=${assignmentsPerPage}`)
+        axios.get(`http://localhost:5000/pagination?page=${current}&size=${assignmentsPerPage}`)
         .then(data => setFilteredAssignments(data.data))
     },[current, assignmentsPerPage])
 
     const handleDifficulty = e =>{
         setDiff(e.target.value)
-        fetch(`https://assignment-server-sand.vercel.app/assignments?difficulty=${e.target.value}`)
+        fetch(`http://localhost:5000/assignments?difficulty=${e.target.value}`)
         .then(res=>res.json())
         .then(data=> {
             setFilteredAssignments(data)
@@ -79,17 +79,27 @@ const Assignments = () => {
             <div className=" max-w-7xl space-y-5 items-center mx-auto mt-10">
                 <div className=" text-center ">
                     <h1 className="text-[#FFF5EB] p-3 rounded-lg bg-[#92140c] w-fit mx-auto text-xl lg:text-4xl  ">Available Assignments </h1>
+                <div className="flex justify-center md:justify-end gap-6">
                 <div
                  className="mt-10 lg:mt-0 flex lg:justify-end justify-center h-2/3 items-center ">
                     <select  
-                    onChange={handleDifficulty} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg"
-          
-          >
+                    onChange={handleDifficulty} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg">
                         <option value="">All</option>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
-                        </select>
+                    </select>
+                </div>
+                <div
+                 className="mt-10 lg:mt-0 flex lg:justify-end justify-center h-2/3 items-center ">
+                    <select  
+                    onChange={handleDifficulty} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg">
+                        <option value="">All</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
                 </div>
                     
 

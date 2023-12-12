@@ -12,7 +12,7 @@ const MyAssignments = () => {
     const {user} =useContext(AuthContext)
     useEffect(()=>{
 
-        axios.get(`https://assignment-server-sand.vercel.app/myAssignments?email=${user?.email}`, {withCredentials:true})
+        axios.get(`http://localhost:5000/myAssignments?email=${user?.email}`, {withCredentials:true})
         .then(data => setAssignments(data.data))
 
 
