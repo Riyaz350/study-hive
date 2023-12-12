@@ -9,9 +9,10 @@ import { motion } from "framer-motion"
 
 const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments}) => {
     
-    const {_id, email, title, photo, mark, difficulty } = assignment
+    const {_id, email, title, photo, mark,subject, difficulty } = assignment
     const {user} =useContext(AuthContext)
     const Difficulty = upperFirstChar(difficulty)
+    const Subject = upperFirstChar(subject)
 
 
     const handleDelete = email =>{
@@ -31,7 +32,7 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                 console.log(result)
                 if (result.isConfirmed) {
                     console.log(_id)
-            fetch(`http://localhost:5000/assignments/${_id}`,{
+            fetch(`https://assignment-server-sand.vercel.app/assignments/${_id}`,{
                 method:"DELETE"
             })
             .then(res => res.json())
@@ -67,6 +68,7 @@ const AssignmentCards = ({assignment, filteredAssignment, setFilteredAssignments
                     <h2 className="lg:card-title text-xl lg:text-3xl">{title}</h2>
                     <p>Marks: {mark}</p>
                     <p>Difficulty: {Difficulty}</p>
+                    <p>Subject: {subject == "cse"? subject.toUpperCase():Subject}</p>
                     </div>
                     <div className="card-actions lg:justify-center mb-2">
                     <div className="gap-2 flex flex-col  w-full">

@@ -15,11 +15,14 @@ const UpdateAssignment = () => {
 
 
 
-    const {_id, title,  photo, mark, difficulty, description } = assignment
+    const {_id, title,  photo, mark, difficulty,subject, description } = assignment
     
     const {user} =useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
-    const [difficultyValue, setDifficultyValue] = useState('easy')
+    const [difficultyValue, setDifficultyValue] = useState(difficulty? difficulty: 'easy')
+    const [subjectValue, setSubjectValue] = useState(subject ? subject : 'math')
+    console.log(subject)
+
     const day = startDate.getDate()
     const month = startDate.getMonth()
     const year = startDate.getFullYear()
@@ -30,12 +33,13 @@ const UpdateAssignment = () => {
         const email = user.email
         const title = form.title.value
         const difficulty = difficultyValue
+        const subjectV = subjectValue
         const photo = form.photo.value
         const mark = form.mark.value
         const date = day+'/'+month+'/'+year
         const description = form.description.value
-        const updateAssignment = {title,email, difficulty, photo, mark, date, description}
-        axios.put(`http://localhost:5000/assignments?_id=${_id}&email=${user?.email}`, updateAssignment, {withCredentials:true})
+        const updateAssignment = {title,email, difficulty, photo, mark, date, subjectV, description}
+        axios.put(`https://assignment-server-sand.vercel.app/assignments?_id=${_id}&email=${user?.email}`, updateAssignment, {withCredentials:true})
         .then(data =>{
                 swal("Assignment Updated", "The Assignment has been updated", "success");
                 navigate('/assignments')
@@ -49,6 +53,10 @@ const UpdateAssignment = () => {
         setDifficultyValue(difficulty)
     }
 
+    const handleSubject = e =>{
+        const subject = e.target.value
+        setSubjectValue(subject)
+    }
     return (
         <div className={` ${"light-home"}`}>
             <Navbar></Navbar>
@@ -69,6 +77,15 @@ const UpdateAssignment = () => {
                                     <option value="medium">Medium</option>
                                     <option value="hard">Hard</option>
                                 </select>
+                            </div>
+
+                            <div className="relative text-xl lg:text-3xl lg:w-[500px] mr-auto">
+                                <select defaultValue={subject} className="bg-[#92140c] text-[#FFDDB6] " onChange={handleSubject}>
+                                    <option value="math">Math</option>
+                                    <option value="cse">CSE</option>
+                                    <option value="art">Art</option>
+                                </select>
+                                {/* <input type="text" name="difficulty"  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Difficulty" required /> */}
                             </div>
                         
                             <div className="w-[500px] lg:mx-auto ">

@@ -23,7 +23,7 @@ const SubmittedAssignmentsRow = ({assignment, assignments, setAssignments}) => {
         const patchedData = {Mark, Feedback, status: 'Completed' }
         console.log(Mark, Feedback)
 
-        axios.patch(`http://localhost:5000/submitted?id=${_id}&email=${user?.email}`,
+        axios.patch(`https://assignment-server-sand.vercel.app/submitted?id=${_id}&email=${user?.email}`,
          patchedData, {withCredentials: true})
             .then(data =>{
                 {

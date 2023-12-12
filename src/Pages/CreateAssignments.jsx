@@ -35,7 +35,7 @@ const CreateAssignments = () => {
         const description = form.description.value
         const addAssignment = {title,email, difficulty, photo, mark,subject, date, description}
 
-        axios.post(`http://localhost:5000/assignments?email=${user?.email}`, addAssignment, {withCredentials:true})
+        axios.post(`https://assignment-server-sand.vercel.app/assignments?email=${user?.email}`, addAssignment, {withCredentials:true})
         .then(data =>{
                 swal("Assignment Created", "You've created an Assignment", "success");
                 navigate('/assignments')
@@ -81,7 +81,7 @@ const CreateAssignments = () => {
                                 <select className="bg-[#92140c] text-[#FFDDB6] " onChange={handleSubject}>
                                     <option value="math">Math</option>
                                     <option value="cse">CSE</option>
-                                    <option value="finance">Finance</option>
+                                    <option value="art">Art</option>
                                 </select>
                                 {/* <input type="text" name="difficulty"  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Difficulty" required /> */}
                             </div>

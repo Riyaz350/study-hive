@@ -18,6 +18,7 @@ const Assignments = () => {
     const [current, setCurrent] =useState(0)
     const [count, setCount] = useState(0)
     const [diff, setDiff] =useState('')
+    const [sub, setSub] =useState('')
 
     const numberOfPages = Math.ceil(count / assignmentsPerPage);
 
@@ -29,20 +30,29 @@ const Assignments = () => {
     const [filteredAssignments, setFilteredAssignments] =useState(assignments)
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/assignmentsCount`)
+        axios.get(`https://assignment-server-sand.vercel.app/assignmentsCount`)
         .then(data => setCount(data.data.count))
-        axios.get(`http://localhost:5000/pagination?page=${current}&size=${assignmentsPerPage}`)
+        axios.get(`https://assignment-server-sand.vercel.app/pagination?page=${current}&size=${assignmentsPerPage}`)
         .then(data => setFilteredAssignments(data.data))
     },[current, assignmentsPerPage])
 
     const handleDifficulty = e =>{
         setDiff(e.target.value)
-        fetch(`http://localhost:5000/assignments?difficulty=${e.target.value}`)
+        fetch(`https://assignment-server-sand.vercel.app/assignments?difficulty=${e.target.value}`)
         .then(res=>res.json())
         .then(data=> {
             setFilteredAssignments(data)
         })
 
+    }
+
+    const handleSubjectFilter = e =>{
+        setSub(e.target.value)
+        fetch(`https://assignment-server-sand.vercel.app/assignments?subject=${e.target.value}`)
+        .then(res=>res.json())
+        .then(data=> {
+            setFilteredAssignments(data)
+        })
     }
 
     // PAGINATION FUNCTIONS
@@ -93,11 +103,11 @@ const Assignments = () => {
                 <div
                  className="mt-10 lg:mt-0 flex lg:justify-end justify-center h-2/3 items-center ">
                     <select  
-                    onChange={handleDifficulty} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg">
+                    onChange={handleSubjectFilter} className="bg-[#92140c] p-2 text-[#FFF5EB] text-xl rounded-lg">
                         <option value="">All</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
+                        <option value="math">Math</option>
+                        <option value="cse">CSE</option>
+                        <option value="art">Art</option>
                     </select>
                 </div>
                 </div>
