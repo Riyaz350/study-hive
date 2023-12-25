@@ -1,7 +1,7 @@
 # Some of the features of this website
 
 
-Live link:  https://65788bedeb8e3103a2b2f66e--tiny-starship-dca274.netlify.app
+Live link:  https://65788bedeb8e3103a2b2f66e--tiny-starship-dca274.netlify.app/
 
 Server side link: https://github.com/Riyaz350/study-hive-server
 
